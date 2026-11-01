@@ -2,8 +2,6 @@
 
 # 👋 Die Kennenlern-Seite – das Erste, was der Nutzer sieht (v3.8)
 
-> ⚠️ **Stand der deutschen Fassung:** Die Seite selbst (`onboarding/index.html`) ist noch in der Sprache des Originals (Oberfläche, Schriftwahl, Stimmenliste). Diese Anleitung beschreibt die Logik; ohne eine deutsche Fassung der Seite nutze den Weg „Ohne Browser“: eine Frage im Chat zu den Farben (siehe `references/start.md`, Schritt 1).
-
 Eine Seite (`onboarding/index.html`) öffnet sich in seinem Browser: Er wählt Farben, Schrift, Untertitelform, Rhythmus … oder **überspringt alles und schreibt in einer Zeile, was er will**. Jeder Abschnitt steht standardmäßig auf „automatisch“, und was er nicht anfasst, entscheidest du. Sie dauert höchstens zwei Minuten.
 
 ## Wann öffnest du sie?
@@ -49,7 +47,6 @@ python3 scripts/00_onboard.py theme <work>      # schreibt <work>/theme.json + k
 | `pace:"calm"` | `theme.pace:"calm"` | läuft in der Engine (`03_cut_zoom.py`) |
 | `pace:"fast"` | nichts | = der normale Rhythmus |
 | `pace:"hyper"` | **du, in den Szenen** | Es gibt keinen Schlüssel dafür in der Engine: `hookZoom` + Moduswechsel alle 1,5–2 s + mehr Wortbewegungen (`slam`/`drop`). Effekte bleiben unter 15 pro Minute (Regel 1) |
-| `digits` | – | Im Deutschen ohne Bedeutung (normale Ziffern) |
 | `content.type` | Moduswahl | `talking`/`review`/`news` = Sprech-Anzeige · `podcast` = `references/podcast.md` · `montage` = `references/montage.md` · `explainer` = ohne Person – **experimentell** (unten) · `auto` = aus dem Material |
 | `content.person:"without"` | ohne Gesicht | Stimme + Motion (`R_OFF` und das Motion-Paket) |
 | `orientation` | Format | ⚠️ Die Sprech-Engine ist nur 1080×1920. Querformat und Quadrat **nur für die Montage** (`12_montage.py` → `9:16`/`1:1`/`16:9`/`4:5`). Wählt er Querformat für ein Sprechvideo, sag es ihm offen: „Querformat gibt es noch nur für die Montage – soll ich es dir hochkant machen?“ |
@@ -75,7 +72,7 @@ python3 scripts/00_onboard.py theme <work>      # schreibt <work>/theme.json + k
 python3 -m edge_tts --voice <die gewählte Stimme> --text "…" --write-media <work>/vo.mp3
 ```
 - Es gehört nicht zu den Tools von `00_setup.sh` – fehlt es: „Ich brauche ein kleines kostenloses Stimmen-Tool, soll ich es installieren?“ Dann `pip3 install edge-tts`.
-- Für Deutsch gibt es mehrere Stimmen (z. B. `de-DE-…Neural`, `de-AT-…Neural`, `de-CH-…Neural`, männlich und weiblich). Liste mit `python3 -m edge_tts --list-voices | grep de-`.
+- Die Seite bietet 8 deutsche Stimmen (Deutschland, Österreich, Schweiz; männlich und weiblich). Weitere: `python3 -m edge_tts --list-voices | grep de-`.
 - **Immer erst eine Probe an 3 Sätzen** aus seinem Text, mit Whisper `medium` gegengeprüft, und ihn die Probe hören lassen, bevor du weitermachst.
 - Schreib Zahlen, Einheiten und Abkürzungen für die Stimme aus („3,5 Prozent“, „zwanzig Euro“), und auf dem Bildschirm steht die Schreibweise mit Ziffern.
 - **Versuche mit bezahlten Stimmen (30. September):** Die Klonung der Stimme des Nutzers mit ElevenLabs (`eleven_v4` kam seiner Stimmlage am nächsten; v3 klang anders). Für ein gutes Ergebnis braucht es ein professionelles Klonen (30 Min.+ seiner Rede in derselben Energie).
@@ -91,7 +88,7 @@ python3 -m edge_tts --voice <die gewählte Stimme> --text "…" --write-media <w
 - Sag ihm offen, bevor du anfängst: „Ein Video ohne Person ist noch experimentell – Stimme und Untertitel kommen korrekt heraus, und die Zeichnungen baue ich dir Szene für Szene. Soll ich weitermachen?“
 
 ## Was Aufmerksamkeit braucht
-- **Die Textfarbe auf der Akzentfarbe** (`theme.onAcc`): Ohne sie wählt die Engine Weiß oder `ink` nach einer alten Regel, die bei dunklen Themes **weiß auf zitronengelb/golden** ergibt (Kontrast 1,2–1,7, nicht lesbar). `theme`/`onacc` schreiben sie mit derselben Regel wie die Vorschau der Seite (die klarere aus `ink`/`bg`, wenn ihr Kontrast 4,5+ ist, sonst Weiß und Schwarz), also ist, was er auf der Seite sieht, das, was herauskommt. Die Engine (`compose.REFERENCE.html` · `compose.PODCAST.html` · `studio.html`) liest `onAcc`, wenn vorhanden, sonst bleibt es beim Alten – Themes ohne `onAcc` ändern ihr Aussehen nicht.
+- **Die Textfarbe auf der Akzentfarbe** (`theme.onAcc`): Ohne sie wählt die Engine Weiß oder `ink` nach einer alten Regel, die bei dunklen Themes **weiß auf zitronengelb/golden** ergibt (Kontrast 1,2–1,7, nicht lesbar). `theme`/`onacc` schreiben sie mit derselben Regel wie die Vorschau der Seite (die klarere aus `ink`/`bg`, wenn ihr Kontrast 4,5+ ist, sonst Weiß und Schwarz), also ist, was er auf der Seite sieht, das, was herauskommt. Die Engine (`compose.REFERENCE.html` · `compose.PODCAST.html`) liest `onAcc`, wenn vorhanden, sonst bleibt es beim Alten – Themes ohne `onAcc` ändern ihr Aussehen nicht.
 - Ein `compose.html`, das vor dem 28. September kopiert wurde, kennt `onAcc` nicht – `theme` warnt dich; kopiere die Referenz neu, wenn du keine Szenen darin gestaltet hast.
 - **Die Schriften** (repariert am 28. September): `04_render_frames.js` wartete auf die Schrift, bevor ihr eingespeister Stil fertig war, sodass jede Schrift außer der Standardschrift ohne Warnung in einer Ersatzschrift erschien. Jetzt wartet es auf den Stil und prüft, dass die Schrift bekannt ist (Test: Alle der Auswahl wurden in ihrer Schrift gezeichnet, und ein falscher Schriftname gab die Warnung aus). `16_render_pod.js` und `08_safe_check.js` wurden auf dasselbe Problem nicht geprüft.
 - Die Sprech-Engine ist nur 1080×1920 – Querformat und Quadrat sind für die Montage.

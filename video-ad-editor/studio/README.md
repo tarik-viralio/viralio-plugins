@@ -1,11 +1,11 @@
-# الاستوديو — طبقة اختيارية فوق السكل
+# Studio – eine optionale Ebene über dem Skill
 
-مجلد مستقل: يشغّل خادماً صغيراً ويعطيك صفحة تعديل باللمس أو بالماوس فوق **نفس** ملفات السكل (caps.json · theme.json · studio.json · sfx.json) ونفس الراسم. حذف هذا المجلد ما يأثر على السكل بشي.
+Ein eigenständiger Ordner: Er startet einen kleinen Server und liefert eine Bearbeitungsseite für Touch oder Maus über **denselben** Dateien des Skills (caps.json · theme.json · studio.json · sfx.json) und denselben Renderer. Löschst du diesen Ordner, ändert sich am Skill nichts.
 
 ```bash
-python3 studio/studio.py <work>     # يطبع رابط الجوال والجهاز
+python3 studio/studio.py <work>     # gibt den Link für Handy und Rechner aus
 ```
 
-الأثر الوحيد على السكل الأساسي: `compose.REFERENCE.html` يقرأ `studio.json` لو موجود (مشاهد · ملصقات · بي-رول · مؤثرات الكلمات · إطفاء ورا الراس). بدونه يشتغل زي قبل بالضبط.
+Die einzige Auswirkung auf den Haupt-Skill: `compose.REFERENCE.html` liest `studio.json`, wenn vorhanden (Szenen · Sticker · B-Roll · Wortbewegungen · „Hinter dem Kopf“ ausschalten). Ohne sie läuft alles wie bisher.
 
-التراجع: زر ↶ (أو Cmd+Z) يرجّع آخر تعديل (40 خطوة). «تراجع عن آخر قص أو حذف» بتبويب التصدير يرجّع ملفات ما قبل آخر إعادة بناء.
+Rückgängig: Der Knopf ↶ (oder Cmd+Z) macht die letzte Änderung rückgängig (40 Schritte). „Letzten Schnitt oder letzte Löschung rückgängig“ im Tab Export stellt die Dateien vor dem letzten Neubau wieder her.

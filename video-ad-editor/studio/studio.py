@@ -30,7 +30,7 @@ def sh(cmd, check=True):
     r = subprocess.run(cmd, capture_output=True, text=True, cwd=W)
     out = (r.stdout or '') + (r.stderr or '')
     if out.strip(): log(out.strip()[-600:])
-    if check and r.returncode: raise RuntimeError(' '.join(cmd[:2]) + ' فشل: ' + out.strip()[-300:])
+    if check and r.returncode: raise RuntimeError(' '.join(cmd[:2]) + ' fehlgeschlagen: ' + out.strip()[-300:])
     return r
 
 def default_scenes(total):
@@ -111,21 +111,21 @@ def reapply_words(old_caps):
     wr('caps.json', caps)
 
 def rebuild_after_cut(old_keep):
-    log("✂️ أقصّ وأزوّم من جديد…"); sh([PY, os.path.join(S, '03_cut_zoom.py'), W])
-    log("🖼️ أطلّع الفريمات…"); shutil.rmtree(P('vfr'), ignore_errors=True); os.makedirs(P('vfr'))
+    log("✂️ Ich schneide und zoome neu…"); sh([PY, os.path.join(S, '03_cut_zoom.py'), W])
+    log("🖼️ Ich extrahiere die Frames…"); shutil.rmtree(P('vfr'), ignore_errors=True); os.makedirs(P('vfr'))
     sh(['ffmpeg', '-v', 'error', '-i', P('cutz.mp4'), '-vf', 'fps=30', '-q:v', '3', '-y', P('vfr', '%05d.jpg')])
     new_keep = rd('cut.json')['keep']; shift_studio(old_keep, new_keep)
     for f in ('behind.json', 'sfx.wav'):
         try: os.remove(P(f))
         except FileNotFoundError: pass
     shutil.rmtree(P('bt'), ignore_errors=True); shutil.rmtree(P('out'), ignore_errors=True)
-    log("ℹ️ الكلام ورا الراس انلغى لأن الفريمات تغيّرت — أعده من الاستوديو لو تبيه.")
+    log("ℹ️ „Hinter dem Kopf“ wurde aufgehoben, weil sich die Frames geändert haben – setz es im Studio neu, wenn du es willst.")
 
 def job(kind, fn):
     if JOB["running"]: return False
     JOB.update(running=True, kind=kind, log="", done=None, err=None, started=time.time(), reload=False)
     def run():
-        try: fn(); log("✅ خلص")
+        try: fn(); log("✅ Fertig")
         except Exception as e: JOB["err"] = str(e)[:400]; log("❌ " + str(e)[:400])
         finally: JOB["running"] = False
     threading.Thread(target=run, daemon=True).start(); return True
@@ -137,15 +137,15 @@ def do_render(rng):
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     for line in p.stdout:
         log(line)
-        if 'فريم مرسوم من' in line: time.sleep(1.5); p.kill(); break
+        if 'Frames gerendert von' in line: time.sleep(1.5); p.kill(); break
     p.wait()
     sh([PY, os.path.join(S, '05_sfx.py'), W], check=False)
     for f in ('ad-final.mp4', 'ad-master.mp4'):
         try: os.remove(P(f))
         except FileNotFoundError: pass
-    log("🎞️ تجميع…"); sh(['bash', os.path.join(S, '06_encode.sh'), W, P('ad-final.mp4')])
-    log("🔊 معايرة الصوت…"); sh(['bash', os.path.join(S, '06b_master.sh'), W, P('ad-final.mp4'), P('ad-master.mp4')])
-    if not os.path.exists(P('ad-master.mp4')): raise RuntimeError('ما طلع الملف النهائي')
+    log("🎞️ Zusammenbau…"); sh(['bash', os.path.join(S, '06_encode.sh'), W, P('ad-final.mp4')])
+    log("🔊 Lautheitsanpassung…"); sh(['bash', os.path.join(S, '06b_master.sh'), W, P('ad-final.mp4'), P('ad-master.mp4')])
+    if not os.path.exists(P('ad-master.mp4')): raise RuntimeError('Die fertige Datei ist nicht entstanden')
     JOB["done"] = 'ad-master.mp4'
 
 def do_recut(keep):
@@ -154,7 +154,7 @@ def do_recut(keep):
         if os.path.exists(P(f)): shutil.copy(P(f), P('.studio_bak', f))
     keep = [[round(float(a), 3), round(float(b), 3)] for a, b in keep if float(b) - float(a) > 0.15]
     wr('cut.json', {**old, "keep": keep})
-    log("📝 أعيد توقيت الكابشن…"); sh([PY, os.path.join(S, '02_captions.py'), W]); reapply_words(old_caps)
+    log("📝 Ich passe die Untertitelzeiten an…"); sh([PY, os.path.join(S, '02_captions.py'), W]); reapply_words(old_caps)
     rebuild_after_cut(old['keep']); JOB["reload"] = True
 
 def do_drop(cards):
@@ -170,13 +170,13 @@ def do_cutout(a, b):
     sh(['node', os.path.join(S, '11_behind_text.js'), W, 'cutout', '%.2f-%.2f' % (a, b)]); JOB["reload"] = True
 
 def do_undo_cut():
-    """يرجّع ملفات ما قبل آخر قص/حذف (.studio_bak) ويعيد البناء"""
+    """Stellt die Dateien vor dem letzten Schnitt/der letzten Löschung wieder her (.studio_bak) und baut neu"""
     bk = P('.studio_bak')
-    if not os.path.exists(os.path.join(bk, 'cut.json')): raise RuntimeError('ما فيه قص سابق أرجع له')
+    if not os.path.exists(os.path.join(bk, 'cut.json')): raise RuntimeError('Kein früherer Schnitt, zu dem ich zurückkehren kann')
     old = rd('cut.json')
     for f in ('cut.json', 'caps.json', 'studio.json', 'sfx.json'):
         if os.path.exists(os.path.join(bk, f)): shutil.copy(os.path.join(bk, f), P(f))
-    log("↶ رجّعت ملفات ما قبل القص…")
+    log("↶ Dateien vor dem Schnitt wiederhergestellt…")
     sh([PY, os.path.join(S, '03_cut_zoom.py'), W]); shutil.rmtree(P('vfr'), ignore_errors=True); os.makedirs(P('vfr'))
     sh(['ffmpeg', '-v', 'error', '-i', P('cutz.mp4'), '-vf', 'fps=30', '-q:v', '3', '-y', P('vfr', '%05d.jpg')])
     shutil.rmtree(P('out'), ignore_errors=True); JOB["reload"] = True
@@ -190,7 +190,7 @@ def do_broll(name, data):
     hdr = ('arib-std-b67' in pr) or ('smpte2084' in pr)
     use = src
     if hdr and os.path.exists(os.path.join(S, 'hdr2sdr')):
-        log("🎨 لقطة HDR — أحوّلها بمحوّل أبل…"); use = P('broll_src', key + '_sdr.mov'); sh([os.path.join(S, 'hdr2sdr'), src, use], check=False)
+        log("🎨 HDR-Aufnahme – ich wandle sie mit dem Apple-Konverter um…"); use = P('broll_src', key + '_sdr.mov'); sh([os.path.join(S, 'hdr2sdr'), src, use], check=False)
         if not os.path.exists(use): use = src
     sh(['ffmpeg', '-v', 'error', '-i', use, '-vf', 'fps=30,scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920', '-q:v', '3', '-y', P('broll', key + '_%04d.jpg')])
     n = len([f for f in os.listdir(P('broll')) if f.startswith(key + '_')])
@@ -253,7 +253,7 @@ class H(http.server.SimpleHTTPRequestHandler):
                 if sfx is not None: cur = rd('sfx.json', {"outro": 3.5}); wr('sfx.json', {"outro": cur.get('outro', 3.5), **{k: v for k, v in sfx.items() if v}})
             return self._json(200, {"ok": True})
         if p.startswith('/api/comment'):
-            cs = rd('comments.json', []); cs.append({"t": data.get('t'), "who": (data.get('who') or 'عميل')[:40], "text": (data.get('text') or '')[:500], "at": time.strftime('%Y-%m-%d %H:%M')}); wr('comments.json', cs); return self._json(200, {"ok": True})
+            cs = rd('comments.json', []); cs.append({"t": data.get('t'), "who": (data.get('who') or 'Kunde')[:40], "text": (data.get('text') or '')[:500], "at": time.strftime('%Y-%m-%d %H:%M')}); wr('comments.json', cs); return self._json(200, {"ok": True})
         if p.startswith('/api/render'):  ok = job('render', lambda: do_render(data.get('range')))
         elif p.startswith('/api/recut'): ok = job('recut', lambda: do_recut(data['keep']))
         elif p.startswith('/api/drop'):  ok = job('drop', lambda: do_drop(data['cards']))
@@ -261,7 +261,7 @@ class H(http.server.SimpleHTTPRequestHandler):
         elif p.startswith('/api/cutout'): ok = job('cutout', lambda: do_cutout(float(data['from']), float(data['to'])))
         elif p.startswith('/api/undo_cut'): ok = job('undo_cut', do_undo_cut)
         else: return self._json(404, {"ok": False})
-        return self._json(200 if ok else 409, {"ok": ok, "msg": "" if ok else "فيه عملية شغالة"})
+        return self._json(200 if ok else 409, {"ok": ok, "msg": "" if ok else "Es läuft schon ein Vorgang"})
 
 def lan_ip():
     try:
@@ -269,8 +269,8 @@ def lan_ip():
     except Exception: return '127.0.0.1'
 
 if __name__ == '__main__':
-    if not os.path.exists(P('compose.html')): sys.exit('❌ ما فيه compose.html بمجلد الشغل')
+    if not os.path.exists(P('compose.html')): sys.exit('❌ Keine compose.html im Arbeitsordner')
     srv = http.server.ThreadingHTTPServer(('0.0.0.0', PORT), H)
-    print(f"📱 الاستوديو شغّال — بالجوال (نفس الواي فاي): http://{lan_ip()}:{PORT}/m   · بالجهاز: http://127.0.0.1:{PORT}/m   · للعميل: /share")
+    print(f"📱 Das Studio läuft – am Handy (gleiches WLAN): http://{lan_ip()}:{PORT}/m   · am Rechner: http://127.0.0.1:{PORT}/m   · für den Kunden: /share")
     try: srv.serve_forever()
     except KeyboardInterrupt: pass

@@ -22,9 +22,3 @@ Leertaste = abspielen/stoppen · Pfeile = ein Frame · Shift+Pfeil = eine Sekund
 ## Schlüssel in `studio.json`, die die Engine liest
 `scenes` (`[{s,e,m:"R_FULL"|"R_DOWN"|"R_LOWER"|"R_OFF"|"R_COLLAGE",nocap?,gb?,tr?}]` – `tr` ist die Übergangsdauer der Szene, 6.1) · `stickers` (6.1: Der Sticker bleibt bis `e` und geht danach ruhig über 0,4 s) · `brollClips` + `brNeed` · `behindOff` · `outro` (`l1,l2,chips,cta,word`) · `gen` + `genFrames` (`references/gen-scenes.md`) ·
 `sceneFx`: Namen von Szenenfunktionen, die in compose.html geschrieben und mit `SCENE_LIST` registriert sind (Beispiel `["myPanel"]`) – **standardmäßig gibt es keine eigene Szene**; `false` leert die Liste.
-
-## Das alte Studio (Ziehen auf der Timeline)
-`scripts/studio.html` ist eine alte Seite mit den Beispielszenen – als Referenz:
-```bash
-cp scripts/studio.html <work>/ && python3 -m http.server 8791 --directory <work>   # dann /studio.html
-```

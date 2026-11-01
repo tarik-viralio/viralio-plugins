@@ -34,7 +34,7 @@ HOME = Path(os.environ.get("VAE_HOME") or (Path.home() / ".video-ad-editor"))
 PROFILE = HOME / "profile.json"
 VOICE_RE = re.compile(r"^[a-z]{2}-[A-Z]{2}-[A-Za-z]+Neural$")
 SAMPLE_TEXT = "Hallo! Das ist meine Stimme. Ich kann dir das ganze Videoskript vorlesen – wie klingt das für dich?"   # لهجة
-SAMPLE_FUSHA = "أَهْلًا بِكَ. هٰذَا صَوْتِي، وَأَسْتَطِيعُ أَنْ أَقْرَأَ لَكَ نَصَّ الْفِيدْيُو كَامِلًا بِوُضُوح."   # فصحى مشكّلة — تطلع بلا غلط
+SAMPLE_FUSHA = SAMPLE_TEXT   # فصحى مشكّلة — تطلع بلا غلط
 LOGO_EXT = {"image/png": ".png", "image/jpeg": ".jpg", "image/webp": ".webp", "image/svg+xml": ".svg"}
 
 # نفس لوحات الصفحة — لو وصل palette بلا colors نرجع لها

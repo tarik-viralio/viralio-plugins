@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ذوقك بالفيديو</title>
-<meta name="description" content="أول ما يشتغل سكل الفيديو: اختار ألوانك وخطك وشكل الكابشن والإيقاع — أو اكتب اللي تبيه وتخطّ الباقي.">
+<title>Dein Stil im Video</title>
+<meta name="description" content="Zum Start des Video-Skills: Wähle Farben, Schrift, Untertitelform und Rhythmus – oder schreib, was du willst, und überspring den Rest.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%234F46E5%22/%3E%3Cpath d=%22M12 9l11 7-11 7z%22 fill=%22white%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=Inter:wght@400;700;900&family=Tajawal:wght@400;700;900&family=Noto+Kufi+Arabic:wght@400;700;900&family=Readex+Pro:wght@400;700&family=Almarai:wght@400;700;800&family=Lalezar&family=Changa:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Poppins:wght@400;700;800&family=Montserrat:wght@400;700;800&family=DM+Sans:wght@400;700;800&family=Space+Grotesk:wght@400;700&family=Oswald:wght@400;700&family=Bebas+Neue&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 /* ── ألوان الصفحة نفسها (مو ألوان الفيديو) — محايدة، لا هوية أحد ── */
 :root{
@@ -272,148 +272,136 @@ h2{font-size:18px;margin:0;font-weight:700}
 
 <header>
   <div>
-    <h1>قبل ما نبدأ، عرّفني على ذوقك</h1>
-    <p class="lead">دقيقتين بالكثير. أي شي ما تختاره أقرره أنا حسب الفيديو، وتقدر تغيّره بعدين بكلمة «غيّر إعداداتي».</p>
+    <h1>Bevor wir starten: Zeig mir deinen Stil</h1>
+    <p class="lead">Höchstens zwei Minuten. Was du nicht wählst, entscheide ich passend zum Video, und du kannst es später mit „ändere meine Einstellungen“ anpassen.</p>
   </div>
-  <button type="button" class="iconbtn" id="themeBtn" aria-label="الوضع الليلي والنهاري">
+  <button type="button" class="iconbtn" id="themeBtn" aria-label="Dunkel- und Hellmodus">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
   </button>
 </header>
 
 <div class="quick">
-  <label for="note">اكتب اللي تبيه وخلّ الباقي علي</label>
-  <textarea id="note" name="note" placeholder="مثلاً: إعلان لمطعمي، ألوان الشعار أحمر وأبيض، إيقاع سريع، وبالنهاية «احجز الحين»"></textarea>
+  <label for="note">Schreib, was du willst – den Rest übernehme ich</label>
+  <textarea id="note" name="note" placeholder="Zum Beispiel: Anzeige für mein Restaurant, Logofarben Rot und Weiß, schneller Rhythmus, am Ende „Jetzt reservieren“"></textarea>
   <div class="row">
-    <span class="hint">تبي تختصر؟ اكتب هني واضغط تخطّ — أو كمّل تحت.</span>
-    <button type="button" class="btn btn-ghost" id="skipBtn">تخطّ الأسئلة وابدأ</button>
+    <span class="hint">Willst du abkürzen? Schreib hier und drück „Überspringen“ – oder mach unten weiter.</span>
+    <button type="button" class="btn btn-ghost" id="skipBtn">Fragen überspringen und starten</button>
   </div>
 </div>
 
 <!-- 1 الهوية -->
 <section class="q" data-g="identity">
-  <div class="qh"><span class="qn">1</span><h2>ألوانك</h2></div>
-  <p class="qs">كل الكروت والنصوص بالفيديو تاخذ من هالألوان. صورتك نفسها ما تنصبغ.</p>
+  <div class="qh"><span class="qn">1</span><h2>Deine Farben</h2></div>
+  <p class="qs">Alle Karten und Texte im Video nehmen diese Farben. Dein Bild selbst wird nicht eingefärbt.</p>
   <div class="tabs" role="tablist">
-    <button type="button" class="tab" role="tab" data-tab="palette" aria-selected="true">ألوان جاهزة</button>
-    <button type="button" class="tab" role="tab" data-tab="custom" aria-selected="false">أختارها بنفسي</button>
-    <button type="button" class="tab" role="tab" data-tab="url" aria-selected="false">من موقعي أو حسابي</button>
+    <button type="button" class="tab" role="tab" data-tab="palette" aria-selected="true">Fertige Paletten</button>
+    <button type="button" class="tab" role="tab" data-tab="custom" aria-selected="false">Selbst wählen</button>
+    <button type="button" class="tab" role="tab" data-tab="url" aria-selected="false">Von meiner Website oder meinem Account</button>
   </div>
   <div class="panel" data-panel="palette"><div class="grid g-pal" id="pals"></div></div>
   <div class="panel" data-panel="custom" hidden>
     <div class="custom">
-      <label class="cpick"><small>الخلفية</small><input type="color" name="c_bg" value="#111827"></label>
-      <label class="cpick"><small>النص</small><input type="color" name="c_ink" value="#F9FAFB"></label>
-      <label class="cpick"><small>لون التمييز</small><input type="color" name="c_acc" value="#22C55E"></label>
+      <label class="cpick"><small>Hintergrund</small><input type="color" name="c_bg" value="#111827"></label>
+      <label class="cpick"><small>Text</small><input type="color" name="c_ink" value="#F9FAFB"></label>
+      <label class="cpick"><small>Akzentfarbe</small><input type="color" name="c_acc" value="#22C55E"></label>
     </div>
-    <p class="cwarn" id="cwarn" hidden>لون التمييز قريب من الخلفية — الكلمة المميزة ما راح تبان زين. جرّب لون أغمق أو أفتح.</p>
+    <p class="cwarn" id="cwarn" hidden>Die Akzentfarbe liegt zu nah am Hintergrund – das hervorgehobene Wort wäre schlecht zu sehen. Probier eine dunklere oder hellere Farbe.</p>
   </div>
   <div class="panel" data-panel="url" hidden>
     <div class="field">
-      <input type="url" name="url" class="ltr" placeholder="https://instagram.com/yourname  أو  https://yoursite.com" inputmode="url">
-      <small>أطلّع ألوانك وخطك وشعارك من الرابط أول ما تبدأ، وأوريك قبل ما أستخدمها.</small>
+      <input type="url" name="url" class="ltr" placeholder="https://instagram.com/deinname  oder  https://deineseite.de" inputmode="url">
+      <small>Ich lese Farben, Schrift und Logo aus dem Link und zeige sie dir, bevor ich sie benutze.</small>
     </div>
   </div>
   <div class="logo-row">
-    <div class="logo-prev" id="logoPrev">شعار</div>
-    <label class="btn btn-ghost filebtn">ارفع شعارك (اختياري)<input type="file" id="logoIn" accept="image/png,image/jpeg,image/webp,image/svg+xml"></label>
+    <div class="logo-prev" id="logoPrev">Logo</div>
+    <label class="btn btn-ghost filebtn">Logo hochladen (optional)<input type="file" id="logoIn" accept="image/png,image/jpeg,image/webp,image/svg+xml"></label>
   </div>
 </section>
 
 <!-- 2 الخط -->
 <section class="q" data-g="font">
-  <div class="qh"><span class="qn">2</span><h2>الخط</h2></div>
-  <p class="qs">كلها تدعم العربي كامل. اختار اللي يشبهك.</p>
+  <div class="qh"><span class="qn">2</span><h2>Schrift</h2></div>
+  <p class="qs">Alle unterstützen Umlaute und ß. Wähle die, die zu dir passt.</p>
   <div class="grid g-font" id="fonts"></div>
 </section>
 
 <!-- 3 الكابشن -->
 <section class="q" data-g="capStyle">
-  <div class="qh"><span class="qn">3</span><h2>شكل الكابشن</h2></div>
-  <p class="qs">الكلمة تتلوّن لحظة ما تنطقها. المعاينة بألوانك وخطك اللي فوق.</p>
+  <div class="qh"><span class="qn">3</span><h2>Form der Untertitel</h2></div>
+  <p class="qs">Das Wort färbt sich im Moment der Aussprache. Die Vorschau zeigt deine Farben und deine Schrift von oben.</p>
   <div class="grid g-cap" id="caps"></div>
-</section>
-
-<!-- 4 الأرقام -->
-<section class="q" data-g="digits">
-  <div class="qh"><span class="qn">4</span><h2>الأرقام</h2></div>
-  <p class="qs">بالكابشن والرسومات.</p>
-  <div class="grid g-2">
-    <label class="opt fontc"><input type="radio" name="digits" value="western"><span class="tick"></span><span class="s" style="font-family:Inter;font-size:22px">خصم 25٪ على 3 قطع</span><span class="t">غربية</span></label>
-    <label class="opt fontc"><input type="radio" name="digits" value="arabic"><span class="tick"></span><span class="s" style="font-family:Inter;font-size:22px">خصم ٢٥٪ على ٣ قطع</span><span class="t">عربية</span></label>
-  </div>
 </section>
 
 <!-- 5 الإيقاع -->
 <section class="q" data-g="pace">
-  <div class="qh"><span class="qn">5</span><h2>إيقاع المونتاج</h2></div>
-  <p class="qs">كم مرة الكادر يتحرك ويتغيّر.</p>
+  <div class="qh"><span class="qn">4</span><h2>Schnittrhythmus</h2></div>
+  <p class="qs">Wie oft sich das Bild bewegt und wechselt.</p>
   <div class="grid g-3" id="paces"></div>
 </section>
 
 <!-- 6 نوع الفيديو -->
 <section class="q" data-g="content">
-  <div class="qh"><span class="qn">6</span><h2>نوع الفيديو</h2></div>
-  <p class="qs">لو ما اخترت، أعرفه من المقطع نفسه.</p>
+  <div class="qh"><span class="qn">5</span><h2>Art des Videos</h2></div>
+  <p class="qs">Wählst du nichts, erkenne ich es am Clip selbst.</p>
   <div class="chips" id="ctypes"></div>
-  <div class="sub">فيه أحد يطلع بالفيديو؟</div>
+  <div class="sub">Kommt jemand im Video vor?</div>
   <div class="seg" id="persons"></div>
 </section>
 
 <!-- 7 المقاس -->
 <section class="q" data-g="orientation">
-  <div class="qh"><span class="qn">7</span><h2>المقاس</h2></div>
-  <p class="qs">تقدر تختار أكثر من واحد.</p>
+  <div class="qh"><span class="qn">6</span><h2>Format</h2></div>
+  <p class="qs">Du kannst mehrere wählen.</p>
   <div class="grid g-3" id="ors"></div>
 </section>
 
 <!-- 8 وين تنشر -->
 <section class="q" data-g="platforms">
-  <div class="qh"><span class="qn">8</span><h2>وين تنشر؟</h2></div>
-  <p class="qs">عشان أبعد النص عن أزرار كل منصة. أكثر من وحدة عادي.</p>
+  <div class="qh"><span class="qn">7</span><h2>Wo veröffentlichst du?</h2></div>
+  <p class="qs">Damit ich den Text von den Buttons jeder Plattform fernhalte. Mehrere sind in Ordnung.</p>
   <div class="chips" id="plats"></div>
-  <div class="sub">طول الفيديو</div>
+  <div class="sub">Länge des Videos</div>
   <div class="seg" id="lens"></div>
 </section>
 
 <!-- 9 الصوت -->
 <section class="q" data-g="audio">
-  <div class="qh"><span class="qn">9</span><h2>الصوت</h2></div>
-  <p class="qs">التعليق الصوتي يلزم بس للفيديو اللي ما فيه أحد يتكلم.</p>
-  <div class="sub" style="margin-top:4px">التعليق الصوتي</div>
+  <div class="qh"><span class="qn">8</span><h2>Ton</h2></div>
+  <p class="qs">Ein Sprecher ist nur nötig, wenn im Video niemand spricht.</p>
+  <div class="sub" style="margin-top:4px">Sprecherstimme</div>
   <div class="seg" id="vmodes"></div>
   <div class="voices" id="voices" hidden>
-    <div class="sub">لغة التعليق</div>
-    <div class="seg" id="vlangs"></div>
-    <div class="sub">صوت رجل ولا امرأة؟</div>
+    <div class="sub">Männliche oder weibliche Stimme?</div>
     <div class="seg" id="vsexes"></div>
     <div id="vlist"></div>
   </div>
-  <div class="sub">ملف صوتي بالخلفية</div>
+  <div class="sub">Hintergrund-Audiodatei</div>
   <div class="seg" id="bgs"></div>
-  <div class="sub">مؤثرات صوتية (ووش، ضربة، نقرة)</div>
+  <div class="sub">Soundeffekte (Whoosh, Schlag, Klick)</div>
   <div class="seg" id="sfxs"></div>
 </section>
 
 <!-- 10 كرت النهاية -->
 <section class="q" data-g="endCard">
-  <div class="qh"><span class="qn">10</span><h2>كرت النهاية</h2></div>
-  <p class="qs">آخر ثواني الفيديو: حسابك وجملة تدعو للتفاعل. اختياري.</p>
-  <label class="switch"><input type="checkbox" name="end_on" id="endOn"><span class="k"></span><span>أبي كرت بالنهاية</span></label>
+  <div class="qh"><span class="qn">9</span><h2>Schlusskarte</h2></div>
+  <p class="qs">Die letzten Sekunden des Videos: dein Account und ein Aufruf zur Interaktion. Optional.</p>
+  <label class="switch"><input type="checkbox" name="end_on" id="endOn"><span class="k"></span><span>Ich möchte eine Schlusskarte</span></label>
   <div class="endf" id="endf" hidden>
-    <div class="field"><small>حسابك</small><input type="text" name="handle" class="ltr" placeholder="@yourname"></div>
-    <div class="field"><small>الجملة الأخيرة — قصيرة تطلع كبيرة</small><input type="text" name="cta" maxlength="60" placeholder="تابعني للجزء الثاني"></div>
-    <div class="field"><small>كلمة يعلّقون فيها (اختياري)</small><input type="text" name="word" placeholder="أبي"></div>
+    <div class="field"><small>Dein Account</small><input type="text" name="handle" class="ltr" placeholder="@yourname"></div>
+    <div class="field"><small>Der letzte Satz – kurz, dann erscheint er groß</small><input type="text" name="cta" maxlength="60" placeholder="Folge mir für Teil 2"></div>
+    <div class="field"><small>Wort, das man kommentieren soll (optional)</small><input type="text" name="word" placeholder="INFO"></div>
   </div>
 </section>
 
 <!-- 11 الحركات -->
 <section class="q" data-g="moves">
-  <div class="qh"><span class="qn">11</span><h2>الحركات</h2></div>
-  <p class="qs">عندي بنك فيه 100 حركة. كل فيديو أختار له لوحة: 3 حركات أساسية يدور حولها، ولهجة للحظات الخاصة، وما تتكرر من فيديو لفيديو.</p>
-  <label class="switch"><input type="checkbox" name="movesOn" id="movesOn"><span class="k"></span><span>أبي أختار الحركات بنفسي</span></label>
+  <div class="qh"><span class="qn">10</span><h2>Bewegungen</h2></div>
+  <p class="qs">Ich habe eine Bank mit 100 Bewegungen. Für jedes Video wähle ich eine Palette: 3 Grundbewegungen, um die sich alles dreht, Akzente für besondere Momente – und nichts wiederholt sich von Video zu Video.</p>
+  <label class="switch"><input type="checkbox" name="movesOn" id="movesOn"><span class="k"></span><span>Ich möchte die Bewegungen selbst wählen</span></label>
   <div id="movesf" hidden style="margin-top:12px">
-    <p class="qs" style="margin:0 0 10px">افتح البنك واضغط «أبي» على اللي تحبها و«لا» على اللي ما تبيها أبد، واحفظ هناك. والباقي أختار منه حسب المونتاج.</p>
-    <a class="btn btn-ghost" href="/moves/?from=onboard" target="_blank" rel="noopener" style="display:inline-flex;text-decoration:none">افتح بنك الحركات</a>
+    <p class="qs" style="margin:0 0 10px">Öffne die Bank und drück „Will ich“ bei denen, die du magst, und „Nie“ bei denen, die du nicht willst, und speichere dort. Aus dem Rest wähle ich passend zum Schnitt.</p>
+    <a class="btn btn-ghost" href="/moves/?from=onboard" target="_blank" rel="noopener" style="display:inline-flex;text-decoration:none">Bewegungsbank öffnen</a>
     <span id="movesSaved" style="margin-inline-start:10px;color:var(--ink2);font-size:14px"></span>
   </div>
 </section>
@@ -421,8 +409,8 @@ h2{font-size:18px;margin:0;font-weight:700}
 </div>
 
 <div class="bar"><div class="wrap">
-  <div class="prog"><div class="meter"><i id="meterI"></i></div><span id="progT">كل شي تلقائي — اختار اللي يهمك بس</span></div>
-  <button type="button" class="btn btn-pri" id="saveBtn">احفظ وخلّنا نبدأ
+  <div class="prog"><div class="meter"><i id="meterI"></i></div><span id="progT">Alles automatisch – wähle nur, was dir wichtig ist</span></div>
+  <button type="button" class="btn btn-pri" id="saveBtn">Speichern und loslegen
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
 </div></div>
 </form>
@@ -430,8 +418,8 @@ h2{font-size:18px;margin:0;font-weight:700}
 <div class="done-ov" id="doneOv" role="dialog" aria-live="polite">
   <div>
     <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
-    <h2 id="doneH">انحفظ</h2>
-    <p id="doneP">ارجع لكلود — بدأ الشغل. تقدر تسكّر هالصفحة.</p>
+    <h2 id="doneH">Gespeichert</h2>
+    <p id="doneP">Geh zurück zu Claude – die Arbeit hat begonnen. Du kannst diese Seite schließen.</p>
     <pre id="doneJ" hidden></pre>
   </div>
 </div>
@@ -441,79 +429,66 @@ h2{font-size:18px;margin:0;font-weight:700}
 /* ═══════════ البيانات ═══════════ */
 const TICK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
 const PALETTES=[  /* محايدة — ولا وحدة منها هوية أحد */
-  {id:'night-gold', n:'ليل وذهبي',   bg:'#101828',ink:'#F5F7FA',acc:'#F2B33D',clay:'#C98B18',mut:'#98A2B3'},
-  {id:'paper-indigo',n:'أبيض ونيلي', bg:'#F7F8FC',ink:'#111827',acc:'#3B5BFD',clay:'#2A3FC0',mut:'#6B7280'},
-  {id:'coal-lime',  n:'فحمي وليموني',bg:'#0E0F0C',ink:'#F4F4EF',acc:'#C6F432',clay:'#93B51F',mut:'#8C8F85'},
-  {id:'deep-mint',  n:'أخضر عميق',  bg:'#0B2A26',ink:'#EAF6F2',acc:'#3DDC97',clay:'#1FA774',mut:'#8FB5AA'},
-  {id:'plum-pink',  n:'بنفسجي ووردي',bg:'#1A1030',ink:'#F7F2FF',acc:'#FF5C8A',clay:'#D63A6A',mut:'#A89BC2'},
-  {id:'white-red',  n:'أبيض وأحمر', bg:'#FFFFFF',ink:'#0A0A0A',acc:'#FF3B30',clay:'#C62A22',mut:'#737373'},
-  {id:'ocean',      n:'بحري',       bg:'#06283D',ink:'#EAF4FB',acc:'#47B5FF',clay:'#1C82C9',mut:'#8BA9BD'},
-  {id:'white-teal', n:'أبيض وتركوازي',bg:'#F4F8F8',ink:'#0B1F24',acc:'#0E9C9C',clay:'#0A7575',mut:'#5E7479'},
+  {id:'night-gold', n:'Nacht und Gold',   bg:'#101828',ink:'#F5F7FA',acc:'#F2B33D',clay:'#C98B18',mut:'#98A2B3'},
+  {id:'paper-indigo',n:'Weiß und Indigo', bg:'#F7F8FC',ink:'#111827',acc:'#3B5BFD',clay:'#2A3FC0',mut:'#6B7280'},
+  {id:'coal-lime',  n:'Kohle und Limette',bg:'#0E0F0C',ink:'#F4F4EF',acc:'#C6F432',clay:'#93B51F',mut:'#8C8F85'},
+  {id:'deep-mint',  n:'Tiefgrün',  bg:'#0B2A26',ink:'#EAF6F2',acc:'#3DDC97',clay:'#1FA774',mut:'#8FB5AA'},
+  {id:'plum-pink',  n:'Violett und Pink',bg:'#1A1030',ink:'#F7F2FF',acc:'#FF5C8A',clay:'#D63A6A',mut:'#A89BC2'},
+  {id:'white-red',  n:'Weiß und Rot', bg:'#FFFFFF',ink:'#0A0A0A',acc:'#FF3B30',clay:'#C62A22',mut:'#737373'},
+  {id:'ocean',      n:'Meerblau',       bg:'#06283D',ink:'#EAF4FB',acc:'#47B5FF',clay:'#1C82C9',mut:'#8BA9BD'},
+  {id:'white-teal', n:'Weiß und Türkis',bg:'#F4F8F8',ink:'#0B1F24',acc:'#0E9C9C',clay:'#0A7575',mut:'#5E7479'},
 ];
 const FONTS=[
-  {f:'Inter',n:'كايرو',d:'متوازن وواضح'},
-  {f:'Tajawal',n:'تجوال',d:'نظيف وخفيف'},
-  {f:'IBM Plex Sans Arabic',n:'آي بي إم بلكس',d:'عصري ورسمي'},
-  {f:'Noto Kufi Arabic',n:'نوتو كوفي',d:'كوفي هندسي'},
-  {f:'Readex Pro',n:'ريدكس برو',d:'حديث وعريض'},
-  {f:'Almarai',n:'المراعي',d:'بسيط ومقروء'},
-  {f:'Changa',n:'تشانغا',d:'مضغوط وقوي'},
-  {f:'Lalezar',n:'لاله‌زار',d:'عريض للعناوين'},
+  {f:'Inter',n:'Inter',d:'ausgewogen und klar'},
+  {f:'Poppins',n:'Poppins',d:'rund und freundlich'},
+  {f:'Montserrat',n:'Montserrat',d:'breit und stark'},
+  {f:'DM Sans',n:'DM Sans',d:'modern und schlicht'},
+  {f:'Space Grotesk',n:'Space Grotesk',d:'technisch und markant'},
+  {f:'Oswald',n:'Oswald',d:'schmal und kräftig'},
+  {f:'Bebas Neue',n:'Bebas Neue',d:'Großbuchstaben für Titel'},
+  {f:'Playfair Display',n:'Playfair Display',d:'elegant mit Serifen'},
 ];
-const FONT_SAMPLE='خلّ الفيديو يحكي عنك — 2026';
+const FONT_SAMPLE='Lass dein Video für dich sprechen – 2026';
 const CAPS_ST=[  /* نفس أسماء المحرّك: theme.json ← capStyle */
-  {v:'card',     n:'كرت',      d:'كرت بلونك والكلمة تنصبغ'},
-  {v:'shadow',   n:'ظل',       d:'أبيض كبير بلا خلفية'},
-  {v:'big',      n:'كلمة كلمة',d:'كلمة وحدة ضخمة'},
-  {v:'underline',n:'خط تحت',   d:'خط بلونك تحت الكلمة'},
-  {v:'bar',      n:'شريط',     d:'شريط بلونك ورا الكلمة'},
-  {v:'type',     n:'كتابة',    d:'تنكتب قدامك بمؤشر'},
-  {v:'chunk',    n:'قطع',      d:'4 كلمات بكبسولة هادية'},
+  {v:'card',     n:'Karte',      d:'Karte in deiner Farbe, das Wort färbt sich'},
+  {v:'shadow',   n:'Schatten',   d:'groß und weiß, ohne Hintergrund'},
+  {v:'big',      n:'Wort für Wort',d:'ein einziges riesiges Wort'},
+  {v:'underline',n:'Unterstrich', d:'Linie in deiner Farbe unter dem Wort'},
+  {v:'bar',      n:'Balken',     d:'Balken in deiner Farbe hinter dem Wort'},
+  {v:'type',     n:'Tippen',     d:'wird mit Cursor vor dir getippt'},
+  {v:'chunk',    n:'Stücke',     d:'4 Wörter in einer ruhigen Kapsel'},
 ];
-const CAP_WORDS=['كلامك','يطلع','كلمة','كلمة'];
+const CAP_WORDS=['Dein','Wort','im','Takt'];
 const PACES=[
-  {v:'calm', n:'هادي', d:'زوم ناعم وقطعات قليلة — للشرح والمحتوى الراقي', seg:3},
-  {v:'fast', n:'سريع', d:'تغيير كل ثانية ونص تقريباً — ريلز عادي', seg:8},
-  {v:'hyper',n:'صاروخ',d:'شي يتحرك كل نص ثانية — هوك وترند', seg:16},
+  {v:'calm', n:'Ruhig', d:'sanfter Zoom, wenige Schnitte – für Erklärungen und hochwertige Inhalte', seg:3},
+  {v:'fast', n:'Schnell', d:'ungefähr alle 1,5 Sekunden ein Wechsel – normale Reels', seg:8},
+  {v:'hyper',n:'Turbo',d:'alle halbe Sekunde passiert etwas – Hook und Trend', seg:16},
 ];
 const CTYPES=[
-  {v:'auto',n:'تلقائي'},{v:'talking',n:'كلام للكاميرا'},{v:'podcast',n:'بودكاست'},{v:'review',n:'مراجعة منتج'},
-  {v:'news',n:'خبر'},{v:'montage',n:'مونتاج مقاطع'},{v:'explainer',n:'شرح موشن بلا شخص (تجريبي)'},
+  {v:'auto',n:'Automatisch'},{v:'talking',n:'Sprechen in die Kamera'},{v:'podcast',n:'Podcast'},{v:'review',n:'Produkttest'},
+  {v:'news',n:'Nachrichten'},{v:'montage',n:'Clip-Montage'},{v:'explainer',n:'Motion-Erklärvideo ohne Person (experimentell)'},
 ];
-const PERSONS=[{v:'auto',n:'تلقائي'},{v:'with',n:'إي، فيه أحد'},{v:'without',n:'لا، بدون شخص'}];
+const PERSONS=[{v:'auto',n:'Automatisch'},{v:'with',n:'Ja, jemand ist zu sehen'},{v:'without',n:'Nein, ohne Person'}];
 const ORS=[
-  {v:'9:16',n:'طولي 9:16',d:'ريلز · تيك توك · شورتس',w:18,h:32},
-  {v:'16:9',n:'عرضي 16:9',d:'يوتيوب · لينكدإن',w:36,h:20},
-  {v:'1:1', n:'مربع 1:1', d:'بوست · إعلان',w:26,h:26},
+  {v:'9:16',n:'Hochformat 9:16',d:'Reels · TikTok · Shorts',w:18,h:32},
+  {v:'16:9',n:'Querformat 16:9',d:'YouTube · LinkedIn',w:36,h:20},
+  {v:'1:1', n:'Quadrat 1:1', d:'Post · Anzeige',w:26,h:26},
 ];
 const PLATS=[
-  {v:'instagram',n:'انستقرام'},{v:'tiktok',n:'تيك توك'},{v:'shorts',n:'يوتيوب شورتس'},{v:'snapchat',n:'سناب'},
-  {v:'youtube',n:'يوتيوب'},{v:'x',n:'إكس'},{v:'linkedin',n:'لينكدإن'},
+  {v:'instagram',n:'Instagram'},{v:'tiktok',n:'TikTok'},{v:'shorts',n:'YouTube Shorts'},{v:'snapchat',n:'Snapchat'},
+  {v:'youtube',n:'YouTube'},{v:'x',n:'X'},{v:'linkedin',n:'LinkedIn'},
 ];
-const LENS=[{v:'auto',n:'تلقائي'},{v:'30',n:'أقل من 30 ث'},{v:'60',n:'دقيقة'},{v:'90',n:'دقيقة ونص'},{v:'full',n:'مثل ما هو'}];
-const VMODES=[{v:'auto',n:'تلقائي'},{v:'own',n:'صوتي أنا'},{v:'tts',n:'صوت مولّد مجاني'}];
-const VLANGS=[{v:'fusha',n:'فصحى (بلا غلط)'},{v:'dialect',n:'لهجة (تجريبي)'},{v:'auto',n:'تلقائي'}];
-const VSEXES=[{v:'auto',n:'تلقائي'},{v:'m',n:'رجل'},{v:'f',n:'امرأة'}];
-const VOICES=[  /* edge-tts — أصوات مايكروسوفت العربية المجانية */
-  ['الخليج',[['ar-KW-FahedNeural','فهد','كويتي','رجل'],['ar-KW-NouraNeural','نورة','كويتية','امرأة'],
-            ['ar-SA-HamedNeural','حامد','سعودي','رجل'],['ar-SA-ZariyahNeural','زارية','سعودية','امرأة'],
-            ['ar-AE-HamdanNeural','حمدان','إماراتي','رجل'],['ar-AE-FatimaNeural','فاطمة','إماراتية','امرأة'],
-            ['ar-QA-MoazNeural','معاذ','قطري','رجل'],['ar-QA-AmalNeural','أمل','قطرية','امرأة'],
-            ['ar-BH-AliNeural','علي','بحريني','رجل'],['ar-BH-LailaNeural','ليلى','بحرينية','امرأة'],
-            ['ar-OM-AbdullahNeural','عبدالله','عماني','رجل'],['ar-OM-AyshaNeural','عائشة','عمانية','امرأة']]],
-  ['الشام والعراق واليمن',[['ar-IQ-BasselNeural','باسل','عراقي','رجل'],['ar-IQ-RanaNeural','رنا','عراقية','امرأة'],
-            ['ar-JO-TaimNeural','تيم','أردني','رجل'],['ar-JO-SanaNeural','سناء','أردنية','امرأة'],
-            ['ar-LB-RamiNeural','رامي','لبناني','رجل'],['ar-LB-LaylaNeural','ليلى','لبنانية','امرأة'],
-            ['ar-SY-LaithNeural','ليث','سوري','رجل'],['ar-SY-AmanyNeural','أماني','سورية','امرأة'],
-            ['ar-YE-SalehNeural','صالح','يمني','رجل'],['ar-YE-MaryamNeural','مريم','يمنية','امرأة']]],
-  ['مصر والمغرب العربي',[['ar-EG-ShakirNeural','شاكر','مصري','رجل'],['ar-EG-SalmaNeural','سلمى','مصرية','امرأة'],
-            ['ar-MA-JamalNeural','جمال','مغربي','رجل'],['ar-MA-MounaNeural','منى','مغربية','امرأة'],
-            ['ar-TN-HediNeural','هادي','تونسي','رجل'],['ar-TN-ReemNeural','ريم','تونسية','امرأة'],
-            ['ar-DZ-IsmaelNeural','إسماعيل','جزائري','رجل'],['ar-DZ-AminaNeural','أمينة','جزائرية','امرأة'],
-            ['ar-LY-OmarNeural','عمر','ليبي','رجل'],['ar-LY-ImanNeural','إيمان','ليبية','امرأة']]],
+const LENS=[{v:'auto',n:'Automatisch'},{v:'30',n:'unter 30 s'},{v:'60',n:'eine Minute'},{v:'90',n:'anderthalb Minuten'},{v:'full',n:'unverändert'}];
+const VMODES=[{v:'auto',n:'Automatisch'},{v:'own',n:'Meine eigene Stimme'},{v:'tts',n:'Kostenlose generierte Stimme'}];
+const VSEXES=[{v:'auto',n:'Automatisch'},{v:'m',n:'Mann'},{v:'f',n:'Frau'}];
+const VOICES=[  /* edge-tts – kostenlose deutsche Stimmen von Microsoft */
+  ['Deutschland',[['de-DE-KatjaNeural','Katja','Deutschland','Frau'],['de-DE-ConradNeural','Conrad','Deutschland','Mann'],
+            ['de-DE-AmalaNeural','Amala','Deutschland','Frau'],['de-DE-KillianNeural','Killian','Deutschland','Mann']]],
+  ['Österreich und Schweiz',[['de-AT-IngridNeural','Ingrid','Österreich','Frau'],['de-AT-JonasNeural','Jonas','Österreich','Mann'],
+            ['de-CH-LeniNeural','Leni','Schweiz','Frau'],['de-CH-JanNeural','Jan','Schweiz','Mann']]],
 ];
-const BGS=[{v:'auto',n:'قرّر وقتها'},{v:'none',n:'بدون'},{v:'own',n:'عندي ملف'}];
-const SFXS=[{v:'auto',n:'تلقائي'},{v:'on',n:'شغّلها'},{v:'off',n:'بدونها'}];
+const BGS=[{v:'auto',n:'Später entscheiden'},{v:'none',n:'Ohne'},{v:'own',n:'Ich habe eine Datei'}];
+const SFXS=[{v:'auto',n:'Automatisch'},{v:'on',n:'Einschalten'},{v:'off',n:'Ohne'}];
 const SERVER=location.protocol.startsWith('http');
 
 /* ═══════════ بناء الخيارات ═══════════ */
@@ -523,18 +498,18 @@ function opt(type,name,v,inner,cls=''){return `<label class="opt ${cls}"><input 
 function simple(box,type,name,list){ $(box).innerHTML=list.map(o=>opt(type,name,o.v,`<span class="t">${o.n}</span>`)).join(''); }
 
 $('#pals').innerHTML=PALETTES.map(p=>opt('radio','palette',p.id,
-  `<span class="mini" style="background:${p.bg};color:${p.ink}"><b style="font-family:Inter">أهلاً فيك</b><i style="background:${p.acc};color:${onColor(p.acc,p.ink,p.bg)}">جديد</i></span>
+  `<span class="mini" style="background:${p.bg};color:${p.ink}"><b style="font-family:Inter">Willkommen</b><i style="background:${p.acc};color:${onColor(p.acc,p.ink,p.bg)}">Neu</i></span>
    <span class="dots">${[p.bg,p.ink,p.acc].map(c=>`<span style="background:${c}"></span>`).join('')}</span><span class="t">${p.n}</span>`,'pal')).join('');
 
-$('#fonts').innerHTML=opt('radio','font','auto',`<span class="s">أختاره أنا حسب الفيديو</span><span class="n"><span class="t">تلقائي</span></span>`,'fontc auto')+
-  FONTS.map(x=>opt('radio','font',x.f,`<span class="s" style="font-family:'${x.f}';font-weight:${x.f==='Lalezar'?400:700}">${FONT_SAMPLE}</span>
+$('#fonts').innerHTML=opt('radio','font','auto',`<span class="s">Ich wähle sie passend zum Video</span><span class="n"><span class="t">Automatisch</span></span>`,'fontc auto')+
+  FONTS.map(x=>opt('radio','font',x.f,`<span class="s" style="font-family:'${x.f}';font-weight:${x.f==='Bebas Neue'?400:700}">${FONT_SAMPLE}</span>
    <span class="n"><span class="t" style="color:var(--ink)">${x.n}</span><span>${x.d}</span></span>`,'fontc')).join('');
 
 const capWords=CAP_WORDS.map((w,i)=>`<span class="w${i===0?' h':''}">${w}</span>`).join('');
-$('#caps').innerHTML=opt('radio','capStyle','auto',`<span class="phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg></span><span class="t">تلقائي</span><span class="d">أختار حسب الفيديو</span>`,'capc cap-auto')+
+$('#caps').innerHTML=opt('radio','capStyle','auto',`<span class="phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg></span><span class="t">Automatisch</span><span class="d">Ich wähle passend zum Video</span>`,'capc cap-auto')+
   CAPS_ST.map(c=>opt('radio','capStyle',c.v,`<span class="phone"><span class="person"></span><span class="cap">${capWords}</span></span><span class="t">${c.n}</span><span class="d">${c.d}</span>`,'capc cap-'+c.v)).join('');
 
-$('#paces').innerHTML=opt('radio','pace','auto',`<span class="stage" style="display:grid;place-items:center;color:var(--ink3);font-size:13px">حسب الكلام</span><span class="t">تلقائي</span><span class="d">أختار حسب نوع الفيديو</span>`,'pacec')+
+$('#paces').innerHTML=opt('radio','pace','auto',`<span class="stage" style="display:grid;place-items:center;color:var(--ink3);font-size:13px">je nach Rede</span><span class="t">Automatisch</span><span class="d">Ich wähle passend zur Art des Videos</span>`,'pacec')+
   PACES.map(p=>opt('radio','pace',p.v,`<span class="stage pace-${p.v}"><span class="fr"><span></span></span><span class="fl"></span><span class="tl">${'<b></b>'.repeat(p.seg)}</span></span><span class="t">${p.n}</span><span class="d">${p.d}</span>`,'pacec')).join('');
 
 simple('#ctypes','radio','ctype',CTYPES);
@@ -545,10 +520,10 @@ simple('#lens','radio','length',LENS);
 simple('#vmodes','radio','voiceMode',VMODES);
 simple('#bgs','radio','bgAudio',BGS);
 simple('#sfxs','radio','sfx',SFXS);
-simple('#vlangs','radio','voiceLang',VLANGS); simple('#vsexes','radio','voiceSex',VSEXES);
-$('#vlist').innerHTML=`<label class="opt vopt vauto"><input type="radio" name="voice" value="auto"><span class="t">اختاره أنا</span><span class="d">أجرّب الأصوات على نصّك وأختار الأوضح</span></label>`+VOICES.map(([g,vs],gi)=>`${gi===1?'<details class="more"><summary>لهجات ثانية (الشام، العراق، اليمن، مصر، المغرب العربي)</summary>':''}<div class="vgroup"><h3>${g}</h3><div class="vrow">${vs.map(([id,n,dial,sex])=>
-  `<label class="opt vopt" data-sex="${sex==='رجل'?'m':'f'}"><input type="radio" name="voice" value="${id}"><button type="button" class="play" data-v="${id}" aria-label="اسمع ${n}"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button><span class="t">${n}</span><span class="d">${dial} · ${sex}</span></label>`).join('')}</div></div>${gi===VOICES.length-1?'</details>':''}`).join('')+
-  `<div class="vnote" id="vnote">${SERVER?'اضغط زر التشغيل تسمع العيّنة (يحتاج نت، أول مرة ثانيتين).':'العيّنات تشتغل لما تنفتح الصفحة من كلود.'} الأصوات مجانية من مايكروسوفت. بالفصحى المشكّلة تطلع مثل مذيع بلا غلط، وباللهجة ممكن تطلع مكسّرة — أجرّبها قبل وأسمعك.</div>`;
+simple('#vsexes','radio','voiceSex',VSEXES);
+$('#vlist').innerHTML=`<label class="opt vopt vauto"><input type="radio" name="voice" value="auto"><span class="t">Ich wähle sie</span><span class="d">Ich probiere die Stimmen an deinem Text und wähle die deutlichste</span></label>`+VOICES.map(([g,vs],gi)=>`${gi===1?'<details class="more"><summary>Weitere Stimmen (Österreich, Schweiz)</summary>':''}<div class="vgroup"><h3>${g}</h3><div class="vrow">${vs.map(([id,n,dial,sex])=>
+  `<label class="opt vopt" data-sex="${sex==='Mann'?'m':'f'}"><input type="radio" name="voice" value="${id}"><button type="button" class="play" data-v="${id}" aria-label="${n} anhören"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button><span class="t">${n}</span><span class="d">${dial} · ${sex}</span></label>`).join('')}</div></div>${gi===VOICES.length-1?'</details>':''}`).join('')+
+  `<div class="vnote" id="vnote">${SERVER?'Drück auf Abspielen, um die Probe zu hören (braucht Internet, beim ersten Mal zwei Sekunden).':'Die Proben laufen, wenn die Seite von Claude aus geöffnet wird.'} Die Stimmen sind kostenlos von Microsoft. Zahlen und Abkürzungen schreibe ich für die Stimme aus; ich probiere sie vorher aus und lasse dich hören.</div>`;
 
 /* ═══════════ الألوان والمعاينة ═══════════ */
 function hx(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16));}
@@ -582,15 +557,15 @@ setInterval(()=>{ wi=(wi+1)%(CAP_WORDS.length+2);
 
 /* ═══════════ التفاعل ═══════════ */
 const touched=new Set();
-const GROUPS=['identity','font','capStyle','digits','pace','content','orientation','platforms','audio','endCard','moves'];
-const groupOf={movesOn:'moves',palette:'identity',c_bg:'identity',c_ink:'identity',c_acc:'identity',url:'identity',font:'font',capStyle:'capStyle',digits:'digits',pace:'pace',
+const GROUPS=['identity','font','capStyle','pace','content','orientation','platforms','audio','endCard','moves'];
+const groupOf={movesOn:'moves',palette:'identity',c_bg:'identity',c_ink:'identity',c_acc:'identity',url:'identity',font:'font',capStyle:'capStyle',pace:'pace',
   ctype:'content',person:'content',orientation:'orientation',platforms:'platforms',length:'platforms',voiceMode:'audio',voice:'audio',bgAudio:'audio',sfx:'audio',
   end_on:'endCard',handle:'endCard',cta:'endCard',word:'endCard'};
 function syncOn(){ $$('.opt input').forEach(i=>i.closest('.opt').classList.toggle('on',i.checked)); }
 function progress(){
   GROUPS.forEach(g=>{const s=$(`section[data-g="${g}"]`); if(s) s.classList.toggle('done',touched.has(g));});
   const n=touched.size; $('#meterI').style.width=(n/GROUPS.length*100)+'%';
-  $('#progT').textContent=n===0?'كل شي تلقائي — اختار اللي يهمك بس':`اخترت ${n} من ${GROUPS.length} — الباقي أقرره أنا`;
+  $('#progT').textContent=n===0?'Alles automatisch – wähle nur, was dir wichtig ist':`${n} von ${GROUPS.length} gewählt – den Rest entscheide ich`;
 }
 $('#f').addEventListener('change',e=>{
   const n=e.target.name; if(groupOf[n]) touched.add(groupOf[n]);
@@ -616,7 +591,7 @@ $$('.tab').forEach(t=>t.addEventListener('click',()=>{
 /* الشعار */
 let logoData=null;
 $('#logoIn').addEventListener('change',e=>{ const file=e.target.files[0]; if(!file) return;
-  if(file.size>6*1024*1024){ toast('الشعار كبير — أقل من 6 ميقا لو سمحت'); return; }
+  if(file.size>6*1024*1024){ toast('Das Logo ist zu groß – bitte unter 6 MB'); return; }
   const rd=new FileReader(); rd.onload=()=>{ logoData={name:file.name,data:rd.result};
     $('#logoPrev').innerHTML=`<img alt="" src="${rd.result}">`; touched.add('identity'); progress(); }; rd.readAsDataURL(file); });
 
@@ -626,12 +601,12 @@ let audio=null;
 $('#voices').addEventListener('click',async e=>{
   const b=e.target.closest('.play'); if(!b) return; e.preventDefault(); e.stopPropagation();
   setRadio('voice',b.dataset.v); setRadio('voiceMode','tts'); touched.add('audio'); progress();
-  if(!SERVER){ toast('العيّنات تشتغل لما تنفتح الصفحة من كلود'); return; }
+  if(!SERVER){ toast('Die Proben laufen, wenn die Seite von Claude aus geöffnet wird'); return; }
   if(audio){audio.pause();}
   b.classList.add('busy');
-  try{ const r=await fetch('/api/voice?v='+encodeURIComponent(b.dataset.v)+'&lang='+(val('voiceLang')==='dialect'?'dialect':'fusha')); if(!r.ok) throw new Error(await r.text());
+  try{ const r=await fetch('/api/voice?v='+encodeURIComponent(b.dataset.v)+'&lang=de'); if(!r.ok) throw new Error(await r.text());
     const blob=await r.blob(); audio=new Audio(URL.createObjectURL(blob)); await audio.play();
-  }catch(err){ toast('ما قدرت أشغّل العيّنة — يمكن النت مفصول. الصوت ينحفظ عادي.'); }
+  }catch(err){ toast('Konnte die Probe nicht abspielen – vielleicht ist das Internet getrennt. Die Stimme wird trotzdem gespeichert.'); }
   finally{ b.classList.remove('busy'); }
 });
 
@@ -657,11 +632,11 @@ function collect(){
   return {
     version:1, skip:false, note:f.note.value.trim(),
     identity,
-    font:val('font'), capStyle:val('capStyle'), digits:val('digits')==='auto'?'western':val('digits'), pace:val('pace'),
+    font:val('font'), capStyle:val('capStyle'), digits:'western', pace:val('pace'),
     content:{type:val('ctype'),person:val('person')},
     orientation:vals('orientation').length?vals('orientation'):['9:16'],
     platforms:vals('platforms'), length:val('length'),
-    voice:{mode:vm, lang:vm==='tts'?(val('voiceLang')||'fusha'):null, gender:vm==='tts'?(val('voiceSex')||'auto'):null, tts:(vm==='tts'&&val('voice')&&val('voice')!=='auto')?val('voice'):null},   /* tts:null = كلود يجرّب الأصوات على النص ويختار — ما فيه صوت ثابت */
+    voice:{mode:vm, lang:vm==='tts'?'de':null, gender:vm==='tts'?(val('voiceSex')||'auto'):null, tts:(vm==='tts'&&val('voice')&&val('voice')!=='auto')?val('voice'):null},   /* tts:null = كلود يجرّب الأصوات على النص ويختار — ما فيه صوت ثابت */
     bgAudio:val('bgAudio'), sfx:val('sfx'),
     endCard:{on:f.end_on.checked, handle:f.handle.value.trim(), cta:f.cta.value.trim(), word:f.word.value.trim()},
     answered:[...touched],
@@ -673,13 +648,13 @@ async function send(obj){
   if(!SERVER){ showDone(obj,false); return; }
   try{ const r=await fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)});
     const j=await r.json(); if(!j.ok) throw new Error(j.error||'x'); showDone(obj,true);
-  }catch(e){ btns.forEach(b=>b.disabled=false); toast('ما انحفظ — تأكد إن كلود للحين شغّال وجرّب مرة ثانية'); }
+  }catch(e){ btns.forEach(b=>b.disabled=false); toast('Nicht gespeichert – prüf, dass Claude noch läuft, und versuch es noch einmal'); }
 }
 function showDone(obj,saved){
   $('#doneOv').classList.add('show');
-  if(obj.skip){ $('#doneH').textContent='تمام، خلّها علي'; }
-  if(!saved){ $('#doneH').textContent='انسخ هذا وارسله لكلود'; $('#doneP').textContent='الصفحة مفتوحة بدون كلود، فما قدرت أحفظ بنفسي.';
-    const o={...obj}; if(o.identity&&o.identity.logo) o.identity={...o.identity,logo:'(ارفع الشعار بالشات)'}; const pre=$('#doneJ'); pre.hidden=false; pre.textContent=JSON.stringify(o,null,2); }
+  if(obj.skip){ $('#doneH').textContent='Alles klar, überlass es mir'; }
+  if(!saved){ $('#doneH').textContent='Kopiere das und schick es an Claude'; $('#doneP').textContent='Die Seite ist ohne Claude geöffnet, deshalb konnte ich nicht selbst speichern.';
+    const o={...obj}; if(o.identity&&o.identity.logo) o.identity={...o.identity,logo:'(Logo im Chat hochladen)'}; const pre=$('#doneJ'); pre.hidden=false; pre.textContent=JSON.stringify(o,null,2); }
 }
 $('#saveBtn').addEventListener('click',()=>send(collect()));
 $('#skipBtn').addEventListener('click',()=>send({version:1,skip:true,note:$('#note').value.trim()}));
@@ -697,7 +672,7 @@ async function prefill(){
   else if(id.mode==='url'&&id.url){ f.url.value=id.url; $('.tab[data-tab="url"]').click(); }
   if(id.logo&&typeof id.logo==='string'){ $('#logoPrev').innerHTML=`<img alt="" src="/api/logo">`; }
   const R=(n,v)=>{ if(v&&v!=='auto') setRadio(n,v); };
-  R('font',p.font); R('capStyle',p.capStyle); R('digits',p.digits); R('pace',p.pace);
+  R('font',p.font); R('capStyle',p.capStyle); R('pace',p.pace);
   if(p.content){R('ctype',p.content.type);R('person',p.content.person);}
   if(Array.isArray(p.orientation)&&p.orientation.length){   /* المحفوظ يستبدل الافتراضي (9:16) — لا يضيف عليه */
     $$('input[name=orientation]').forEach(i=>{i.checked=p.orientation.includes(i.value);}); }
@@ -707,7 +682,7 @@ async function prefill(){
   if(p.endCard&&p.endCard.on){ f.end_on.checked=true; $('#endf').hidden=false; f.handle.value=p.endCard.handle||''; f.cta.value=p.endCard.cta||''; f.word.value=p.endCard.word||''; }
   (p.answered||[]).forEach(g=>touched.add(g));
   syncOn(); applyPreview(); progress();
-  toast('فتحت إعداداتك السابقة — غيّر اللي تبيه');
+  toast('Deine früheren Einstellungen sind geladen – ändere, was du willst');
 }
 /* الافتراضي الظاهر */
 setRadio('ctype','auto'); setRadio('person','auto'); setRadio('length','auto'); setRadio('voiceMode','auto'); setRadio('bgAudio','auto'); setRadio('sfx','auto');
@@ -719,7 +694,7 @@ syncOn(); applyPreview(); progress(); prefill();
 (function(){ const on=document.getElementById('movesOn'), f=document.getElementById('movesf'), lab=document.getElementById('movesSaved');
   if(!on) return;
   const show=async()=>{ try{ const st=await (await fetch('/api/state')).json(); const m=st.moves||{}; const a=(m.on||[]).length, b=(m.off||[]).length;
-    lab.textContent = a||b ? `محفوظ: أبي ${a} · لا ${b}` : ''; if((a||b)&&!on.checked){on.checked=true; f.hidden=false;} }catch(e){} };
+    lab.textContent = a||b ? `Gespeichert: ${a} gewünscht · ${b} abgelehnt` : ''; if((a||b)&&!on.checked){on.checked=true; f.hidden=false;} }catch(e){} };
   on.addEventListener('change',()=>{ f.hidden=!on.checked; });
   window.addEventListener('focus',show); show();
 })();
