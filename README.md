@@ -26,7 +26,7 @@ Dazu: ein geschriebener **Hook** am Reel-Anfang (mit Regelprüfung), **17 Stile*
 
 ## Installation
 
-Die Adresse des Marketplaces bekommst du von Viralio: `<GITHUB-ORG>/viralio-plugins`
+Die Adresse des Marketplaces: `tarik-viralio/viralio-plugins`
 
 **In claude.ai oder der Desktop-App**
 1. Einstellungen → **Plugins** → **Marketplace hinzufügen**.
@@ -35,7 +35,7 @@ Die Adresse des Marketplaces bekommst du von Viralio: `<GITHUB-ORG>/viralio-plug
 
 **Im Terminal**
 ```bash
-claude plugin marketplace add <GITHUB-ORG>/viralio-plugins
+claude plugin marketplace add tarik-viralio/viralio-plugins
 claude plugin install viralio-video@viralio-plugins
 ```
 Danach eine neue Unterhaltung öffnen.
@@ -63,7 +63,7 @@ Standard ist **Deutsch**. Für eine andere Sprache die Umgebungsvariable `VIDEO_
 
 ## Support
 
-`<Kontakt von Viralio>` · https://viralio.de
+https://viralio.de
 
 ## Herkunft und Lizenz
 
