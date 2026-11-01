@@ -3,140 +3,175 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dein Stil im Video</title>
-<meta name="description" content="Zum Start des Video-Skills: Wähle Farben, Schrift, Untertitelform und Rhythmus – oder schreib, was du willst, und überspring den Rest.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%228%22 fill=%22%234F46E5%22/%3E%3Cpath d=%22M12 9l11 7-11 7z%22 fill=%22white%22/%3E%3C/svg%3E">
+<title>Viralio Video – Dein Look</title>
+<meta name="description" content="Lege in zwei Minuten fest, wie deine Videos aussehen: Farben, Schrift, Untertitel und Rhythmus – oder beschreib es in einem Satz.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%227%22 fill=%22%2314213D%22/%3E%3Cpath d=%22M6 8h6l4 10 4-10h6L18 25h-4z%22 fill=%22%23FCA311%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Poppins:wght@400;700;800&family=Montserrat:wght@400;700;800&family=DM+Sans:wght@400;700;800&family=Space+Grotesk:wght@400;700&family=Oswald:wght@400;700&family=Bebas+Neue&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700;800&family=Lato:wght@400;700;900&family=Inter:wght@400;700;900&family=Poppins:wght@400;700;800&family=Montserrat:wght@400;700;800&family=DM+Sans:wght@400;700;800&family=Space+Grotesk:wght@400;700&family=Oswald:wght@400;700&family=Bebas+Neue&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-/* ── ألوان الصفحة نفسها (مو ألوان الفيديو) — محايدة، لا هوية أحد ── */
+/* Viralio-Marke: Navy #14213D · Amber #FCA311 · warmes Off-White · League Spartan + Lato */
 :root{
-  --bg:#F6F6F4; --surface:#FFFFFF; --surface2:#EFEFEC; --line:#E2E2DD; --ink:#16161A; --ink2:#55555E; --ink3:#8A8A93;
-  --acc:#4F46E5; --acc-ink:#FFFFFF; --acc-soft:rgba(79,70,229,.10); --ok:#10B981; --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.05);
-  --r:16px; --r-sm:11px;
-  /* ألوان المعاينة = ألوان الفيديو اللي اختارها (تتغيّر مع اختياره) */
-  --p-bg:#101828; --p-ink:#F5F7FA; --p-acc:#F2B33D; --p-on:#101828; --p-font:'Inter';
+  --navy:#14213D; --amber:#FCA311; --amber-d:#E08E00;
+  --bg:#FAF9F5; --bg2:#F2F0E9; --paper:#FFFFFF; --ink:#14213D; --ink2:#55606F; --ink3:#8590A0;
+  --line:rgba(20,33,61,.12); --line2:rgba(20,33,61,.24);
+  --sel:rgba(252,163,17,.12); --ok:#1F9D6B; --shadow:0 1px 2px rgba(20,33,61,.06),0 10px 30px rgba(20,33,61,.07);
+  --display:"League Spartan",system-ui,sans-serif; --body:"Lato",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:14px; --r-sm:10px;
+  /* Farben der Vorschau = Farben, die du für dein Video wählst */
+  --p-bg:#14213D; --p-ink:#FAF9F5; --p-acc:#FCA311; --p-on:#14213D; --p-font:'Inter';
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0E0E11; --surface:#17171C; --surface2:#1F1F26; --line:#2A2A33; --ink:#F2F2F5; --ink2:#A9A9B5; --ink3:#72727E;
-    --acc:#8B85FF; --acc-ink:#0E0E11; --acc-soft:rgba(139,133,255,.14); --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
-    color-scheme:dark;
+    --bg:#0B1325; --bg2:#101B33; --paper:#14213D; --ink:#F4F1E8; --ink2:#B4BDCC; --ink3:#7C879A;
+    --line:rgba(255,255,255,.12); --line2:rgba(255,255,255,.26); --sel:rgba(252,163,17,.16);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.35); color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0E0E11; --surface:#17171C; --surface2:#1F1F26; --line:#2A2A33; --ink:#F2F2F5; --ink2:#A9A9B5; --ink3:#72727E;
-  --acc:#8B85FF; --acc-ink:#0E0E11; --acc-soft:rgba(139,133,255,.14); --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
-  color-scheme:dark;
+  --bg:#0B1325; --bg2:#101B33; --paper:#14213D; --ink:#F4F1E8; --ink2:#B4BDCC; --ink3:#7C879A;
+  --line:rgba(255,255,255,.12); --line2:rgba(255,255,255,.26); --sel:rgba(252,163,17,.16);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 12px 34px rgba(0,0,0,.35); color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans Arabic',system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif;
-  font-size:15px;line-height:1.6;padding-bottom:110px;overflow-x:hidden}
-.wrap{max-width:980px;margin:0 auto;padding:0 16px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;padding-bottom:104px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 button,input,textarea{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--display);letter-spacing:-.01em;margin:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+::selection{background:var(--amber);color:var(--navy)}
 
-/* ── الرأس ── */
-header{padding:28px 0 8px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
-h1{font-size:clamp(24px,4.4vw,34px);line-height:1.25;margin:0 0 6px;font-weight:700;letter-spacing:-.01em}
-.lead{color:var(--ink2);margin:0;max-width:560px}
-.iconbtn{flex:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;cursor:pointer}
-.iconbtn svg{width:20px;height:20px}
+/* ── Kopf mit Marke und Schritten ── */
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .in{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:18px}
+.brand{flex:none;display:flex;align-items:center}
+.brand img{height:28px;width:auto;display:block}
+:root[data-theme="dark"] .brand img,:root:not([data-theme="light"]) .brand img{background:#FAF9F5;border-radius:8px;padding:4px 8px}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .brand img{background:none;padding:0}}
+.steps{flex:1;display:flex;gap:6px;justify-content:center;min-width:0}
+.stp{display:flex;align-items:center;gap:8px;border:0;background:none;padding:6px 10px;border-radius:999px;cursor:pointer;color:var(--ink3);font-family:var(--display);font-weight:700;font-size:14px;white-space:nowrap}
+.stp i{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:var(--bg2);border:1px solid var(--line);color:var(--ink2)}
+.stp.on{color:var(--ink);background:var(--paper);box-shadow:var(--shadow)}
+.stp.on i{background:var(--navy);border-color:var(--navy);color:#fff}
+.stp.seen i{background:var(--amber);border-color:var(--amber);color:var(--navy)}
+.iconbtn{flex:none;width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;cursor:pointer}
+.iconbtn svg{width:19px;height:19px}
 
-/* ── الطريق السريع ── */
-.quick{margin:18px 0 8px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
-.quick label{display:block;font-weight:700;margin-bottom:8px}
-.quick textarea{width:100%;min-height:84px;resize:vertical;border:1px solid var(--line);background:var(--surface2);border-radius:var(--r-sm);padding:12px 14px;line-height:1.7;outline:none}
-.quick textarea:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
-.quick .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:10px}
-.quick .hint{color:var(--ink3);font-size:13px}
-.cwarn{margin:10px 0 0;font-size:13px;color:#B45309;background:rgba(245,158,11,.12);border-radius:10px;padding:8px 12px}
-.btn{border:0;border-radius:12px;padding:11px 18px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
-.btn-ghost{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
-.btn-pri{background:var(--acc);color:var(--acc-ink)}
-.btn:focus-visible,.opt:focus-within,.iconbtn:focus-visible{outline:3px solid var(--acc-soft);outline-offset:2px}
+/* ── Gerüst: Schritte links, Vorschau rechts ── */
+.shell{max-width:1120px;margin:0 auto;padding:30px 20px 0;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:44px;align-items:start}
+.main{min-width:0;max-width:680px}
+.chapter[hidden]{display:none}
+.eyebrow{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-d);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:22px;height:3px;background:var(--amber);border-radius:2px}
+h1{font-size:clamp(34px,5.4vw,52px);line-height:1.04;font-weight:800;margin-bottom:14px}
+h1 em{font-style:normal;background:linear-gradient(transparent 62%,var(--amber) 62% 92%,transparent 92%)}
+.lead{color:var(--ink2);font-size:18px;margin:0 0 26px;max-width:560px}
+.chap-h{font-size:clamp(28px,4vw,38px);line-height:1.1;font-weight:800;margin-bottom:8px}
+.chap-s{color:var(--ink2);margin:0 0 6px;max-width:540px}
 
-/* ── الأقسام ── */
-section.q{margin-top:26px}
-.qh{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
-.qn{flex:none;width:26px;height:26px;border-radius:8px;background:var(--surface2);border:1px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--ink2);transform:translateY(3px)}
-section.q.done .qn{background:var(--acc);border-color:var(--acc);color:var(--acc-ink)}
-h2{font-size:18px;margin:0;font-weight:700}
-.qs{color:var(--ink3);font-size:13px;margin:0 36px 12px 0}
-.sub{font-weight:700;font-size:14px;margin:16px 0 8px;color:var(--ink2)}
+/* Startwahl */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.card{background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+.card h2{font-size:21px;font-weight:700}
+.card p{margin:0;color:var(--ink2);font-size:15px}
+.card textarea{width:100%;min-height:92px;resize:vertical;border:1.5px solid var(--line);background:var(--bg);border-radius:var(--r-sm);padding:12px 14px;line-height:1.6;outline:none}
+.card textarea:focus,.field input:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(252,163,17,.35)}
+.card .grow{flex:1}
+.tag{align-self:flex-start;font-size:12px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;background:var(--bg2);color:var(--ink2);border-radius:999px;padding:3px 10px}
+.tag.hot{background:var(--amber);color:var(--navy)}
 
-/* الخيار العام */
-.opt{position:relative;display:block;cursor:pointer;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r-sm);transition:border-color .15s,background .15s,transform .1s}
-.opt:hover{border-color:var(--ink3)}
+/* Buttons */
+.btn{border:0;border-radius:12px;padding:12px 20px;font-family:var(--display);font-weight:700;font-size:16px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;transition:transform .12s,background .15s,box-shadow .15s}
+.btn:active{transform:scale(.98)}
+.btn-pri{background:var(--amber);color:var(--navy);box-shadow:0 6px 18px rgba(252,163,17,.35)}
+.btn-pri:hover{background:#FFB22E}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:#1D2D52}
+.btn-ghost{background:var(--paper);color:var(--ink);border:1.5px solid var(--line2)}
+.btn-ghost:hover{border-color:var(--navy)}
+.btn[disabled]{opacity:.5;pointer-events:none}
+.btn[hidden],.bar[hidden]{display:none!important}
+.btn:focus-visible,.opt:has(input:focus-visible),.iconbtn:focus-visible,.stp:focus-visible,.tab:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+/* Fragen */
+section.q{margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+section.q:first-of-type{border-top:0;padding-top:0;margin-top:22px}
+.qh{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.qh h2{font-size:22px;font-weight:700}
+.qdone{display:none;width:20px;height:20px;border-radius:50%;background:var(--amber);color:var(--navy);place-items:center}
+.qdone svg{width:12px;height:12px}
+section.q.done .qdone{display:grid}
+.qs{color:var(--ink2);font-size:15px;margin:0 0 14px;max-width:560px}
+.sub{font-family:var(--display);font-weight:700;font-size:16px;margin:20px 0 8px}
+.hint{color:var(--ink3);font-size:13.5px}
+
+/* Auswahlkarten */
+.opt{position:relative;display:block;cursor:pointer;background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-sm);transition:border-color .15s,background .15s,transform .1s,box-shadow .15s}
+.opt:hover{border-color:var(--line2);box-shadow:var(--shadow)}
 .opt:active{transform:scale(.985)}
 .opt input{position:absolute;opacity:0;pointer-events:none}
-.opt.on{border-color:var(--acc);background:var(--acc-soft)}
-.opt .tick{position:absolute;top:8px;left:8px;width:20px;height:20px;border-radius:50%;background:var(--acc);color:var(--acc-ink);display:none;place-items:center;z-index:2}
+.opt.on{border-color:var(--navy);background:var(--sel);box-shadow:inset 0 0 0 1px var(--navy)}
+:root[data-theme="dark"] .opt.on,:root:not([data-theme="light"]) .opt.on{border-color:var(--amber);box-shadow:inset 0 0 0 1px var(--amber)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .opt.on{border-color:var(--navy);box-shadow:inset 0 0 0 1px var(--navy)}}
+.opt .tick{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;background:var(--amber);color:var(--navy);display:none;place-items:center;z-index:2}
 .opt .tick svg{width:12px;height:12px}
 .opt.on .tick{display:grid}
 .t{font-weight:700;display:block}
-.d{color:var(--ink3);font-size:12.5px;display:block;line-height:1.5}
+.d{color:var(--ink3);font-size:13px;display:block;line-height:1.45}
 
 .grid{display:grid;gap:10px}
-.g-pal{grid-template-columns:repeat(auto-fill,minmax(132px,1fr))}
-.g-font{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
-.g-cap{grid-template-columns:repeat(auto-fill,minmax(118px,1fr))}
-.g-3{grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
-.g-2{grid-template-columns:repeat(2,minmax(0,250px))}
+.g-pal{grid-template-columns:repeat(auto-fill,minmax(136px,1fr))}
+.g-font{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.g-cap{grid-template-columns:repeat(auto-fill,minmax(112px,1fr))}
+.g-3{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chips .opt{border-radius:999px;padding:8px 15px}
-.chips .opt .t{font-weight:500}
-.chips .opt.on .t{font-weight:700}
+.chips .opt{border-radius:999px;padding:8px 16px}
+.chips .opt .t{font-weight:700}
 .chips .opt .tick{display:none!important}
-.seg{display:inline-flex;flex-wrap:wrap;gap:6px;background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:5px}
-.seg .opt{border:0;background:transparent;border-radius:10px;padding:7px 14px}
-.seg .opt.on{background:var(--surface);box-shadow:var(--shadow)}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:4px}
+.seg .opt{border:0;background:transparent;border-radius:10px;padding:8px 15px;box-shadow:none}
+.seg .opt.on{background:var(--paper);box-shadow:var(--shadow),inset 0 0 0 1.5px var(--navy)}
 .seg .opt .tick{display:none!important}
 
-/* تبويبات الهوية */
-.tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
-.tab{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;cursor:pointer;font-weight:500}
-.tab[aria-selected="true"]{border-color:var(--acc);background:var(--acc-soft);font-weight:700}
+/* Farben-Tabs */
+.tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.tab{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:8px 16px;cursor:pointer;font-weight:700;font-size:14.5px}
+.tab[aria-selected="true"]{border-color:var(--navy);background:var(--navy);color:#fff}
 .panel[hidden]{display:none}
-
-/* لوحات الألوان */
 .pal{padding:8px}
-.pal .mini{height:78px;border-radius:9px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:9px}
+.pal .mini{height:84px;border-radius:8px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:10px}
 .pal .mini b{font-size:15px;line-height:1.2}
 .pal .mini i{font-style:normal;align-self:flex-start;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;margin-top:5px}
-.pal .dots{display:flex;gap:4px;margin:8px 2px 2px}
+.pal .dots{display:flex;gap:4px;margin:9px 2px 2px}
 .pal .dots span{width:14px;height:14px;border-radius:50%;border:1px solid rgba(128,128,128,.35)}
-.pal .t{font-size:13px;margin:4px 2px 0}
-
-.custom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;max-width:560px}
-.cpick{background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r-sm);padding:10px;display:flex;flex-direction:column;gap:6px}
-.cpick input[type=color]{width:100%;height:44px;border:0;padding:0;background:none;border-radius:8px;cursor:pointer}
+.pal .t{font-size:13.5px;margin:4px 2px 0}
+.custom{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:560px}
+.cpick{background:var(--paper);border:1.5px solid var(--line);border-radius:var(--r-sm);padding:10px;display:flex;flex-direction:column;gap:6px}
+.cpick input[type=color]{width:100%;height:46px;border:0;padding:0;background:none;border-radius:8px;cursor:pointer}
 .cpick input[type=color]::-webkit-color-swatch-wrapper{padding:0}
 .cpick input[type=color]::-webkit-color-swatch{border:1px solid var(--line);border-radius:8px}
-.cpick small{color:var(--ink3);font-size:12px}
+.cpick small{color:var(--ink2);font-size:13px;font-weight:700}
+.cwarn{margin:12px 0 0;font-size:14px;color:#8A5300;background:rgba(252,163,17,.18);border-radius:10px;padding:10px 14px}
 .field{display:flex;flex-direction:column;gap:6px;max-width:560px}
-.field input[type=url],.field input[type=text]{border:1.5px solid var(--line);background:var(--surface);border-radius:var(--r-sm);padding:11px 13px;outline:none;width:100%}
-.field input:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-soft)}
-.field small{color:var(--ink3);font-size:12.5px}
+.field input[type=url],.field input[type=text]{border:1.5px solid var(--line);background:var(--paper);border-radius:var(--r-sm);padding:12px 14px;outline:none;width:100%}
+.field small{color:var(--ink2);font-size:13.5px}
 .ltr{direction:ltr;text-align:left}
-.logo-row{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}
-.logo-prev{width:52px;height:52px;border-radius:12px;border:1.5px dashed var(--line);display:grid;place-items:center;overflow:hidden;background:var(--surface2);color:var(--ink3);font-size:11px}
+.logo-row{display:flex;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.logo-prev{width:54px;height:54px;border-radius:12px;border:1.5px dashed var(--line2);display:grid;place-items:center;overflow:hidden;background:var(--bg2);color:var(--ink3);font-size:11px}
 .logo-prev img{max-width:100%;max-height:100%}
 .filebtn{position:relative;overflow:hidden}
 .filebtn input{position:absolute;inset:0;opacity:0;cursor:pointer}
 
-/* الخطوط */
+/* Schriften */
 .fontc{padding:14px 14px 12px}
-.fontc .s{display:block;font-size:22px;line-height:1.35;margin:2px 0 6px;color:var(--ink)}
-.fontc .n{display:flex;justify-content:space-between;color:var(--ink3);font-size:12px}
-.fontc.auto .s{font-family:inherit;font-size:16px;color:var(--ink2);padding:9px 0}
+.fontc .s{display:block;font-size:21px;line-height:1.3;margin:2px 0 8px;color:var(--ink)}
+.fontc .n{display:flex;justify-content:space-between;gap:8px;color:var(--ink3);font-size:12.5px}
+.fontc.auto .s{font-family:var(--body);font-size:15px;color:var(--ink2);padding:9px 0}
 
-/* معاينات الكابشن — نفس ستايلات المحرّك (capStyle) */
+/* Untertitel-Karten und Vorschau-Rahmen (gleiche Stile wie die Engine) */
 .capc{padding:8px}
-.phone{display:block;aspect-ratio:9/13;border-radius:10px;overflow:hidden;position:relative;background:
+.phone{display:block;aspect-ratio:9/13;border-radius:9px;overflow:hidden;position:relative;background:
    radial-gradient(60% 42% at 50% 36%,rgba(255,255,255,.18),transparent 70%),
    linear-gradient(180deg,#5b6472 0%,#3b414b 60%,#2a2e35 100%)}
 .phone .person{display:block;position:absolute;left:22%;right:22%;top:5%;bottom:0;
@@ -144,44 +179,36 @@ h2{font-size:18px;margin:0;font-weight:700}
 .phone .cap{position:absolute;left:6%;right:6%;bottom:9%;display:flex;flex-wrap:wrap;justify-content:center;gap:3px 5px;
    font-family:var(--p-font),'Inter',sans-serif;font-weight:800;font-size:13.5px;line-height:1.25;direction:ltr}
 .cap .w{transition:color .12s,opacity .12s,transform .15s;position:relative;display:inline-block}
-/* card */
 .cap-card .cap{background:var(--p-bg);border-radius:8px;padding:4px 6px;color:var(--p-ink)}
 .cap-card .w.a{color:var(--p-acc)}
-/* shadow */
 .cap-shadow .cap{color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.65);font-size:15px}
 .cap-shadow .w{opacity:.6}.cap-shadow .w.a,.cap-shadow .w.p{opacity:1}.cap-shadow .w.a.h{color:var(--p-acc)}
-/* big */
 .cap-big .cap{bottom:10%;font-size:28px;font-weight:900;color:#fff;text-shadow:0 3px 8px rgba(0,0,0,.55)}
 .cap-big .w{display:none}.cap-big .w.a{display:inline-block;animation:pop .22s ease-out}
 @keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
-/* underline */
 .cap-underline .cap{color:#fff;text-shadow:0 2px 5px rgba(0,0,0,.6)}
-.cap-underline .w::after{content:"";position:absolute;right:0;bottom:-3px;height:3px;border-radius:2px;background:var(--p-acc);width:0;transition:width .2s}
+.cap-underline .w::after{content:"";position:absolute;left:0;bottom:-3px;height:3px;border-radius:2px;background:var(--p-acc);width:0;transition:width .2s}
 .cap-underline .w.a::after,.cap-underline .w.p::after{width:100%}
-/* bar */
 .cap-bar .cap{color:#fff;text-shadow:0 2px 5px rgba(0,0,0,.55)}
 .cap-bar .w{padding:0 4px;border-radius:5px}
 .cap-bar .w.a{background:var(--p-acc);color:var(--p-on);text-shadow:none}
-/* chunk (6.1): كبسولة بسطر واحد، المنطوقة بلون التمييز، بلا قفز */
 .cap-chunk .cap{left:0;right:0;width:max-content;max-width:88%;margin:0 auto;flex-wrap:nowrap;background:var(--p-bg);border-radius:99px;padding:4px 10px;color:var(--p-ink)}
 .cap-chunk .w{opacity:.45}.cap-chunk .w.p{opacity:1}.cap-chunk .w.a{opacity:1;color:var(--p-acc)}
-/* type */
 .cap-type .cap{color:#fff;text-shadow:0 2px 5px rgba(0,0,0,.6)}
 .cap-type .w{display:none}.cap-type .w.p,.cap-type .w.a{display:inline-block}
 .cap-type .w.a::before{content:"";position:absolute;left:-5px;top:12%;width:3px;height:76%;background:var(--p-acc);animation:blink .6s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
-/* auto */
-.cap-auto .phone{display:grid;place-items:center;background:var(--surface2)}
+.cap-auto .phone{display:grid;place-items:center;background:var(--bg2)}
 .cap-auto .phone svg{width:44px;height:44px;color:var(--ink3)}
-.capc .t{font-size:13.5px;margin:7px 2px 0}.capc .d{margin:0 2px 2px}
+.capc .t{font-size:14px;margin:8px 2px 0}.capc .d{margin:0 2px 2px}
 
-/* الإيقاع */
+/* Rhythmus */
 .pacec{padding:10px}
-.stage{display:block;height:84px;border-radius:9px;background:var(--surface2);position:relative;overflow:hidden}
+.stage{display:block;height:84px;border-radius:8px;background:var(--bg2);position:relative;overflow:hidden}
 .stage .fr{position:absolute;inset:0;display:grid;place-items:center}
 .stage .fr span{display:block;width:34px;height:34px;border-radius:50%;background:var(--ink3);opacity:.55;box-shadow:0 30px 0 12px var(--ink3)}
 .stage .tl{position:absolute;left:8px;right:8px;bottom:7px;height:4px;display:flex;gap:2px}
-.stage .tl b{flex:1;border-radius:2px;background:var(--ink3);opacity:.35}
+.stage .tl b{flex:1;border-radius:2px;background:var(--amber);opacity:.7}
 .pace-calm .fr{animation:calm 6s ease-in-out infinite}
 @keyframes calm{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .pace-fast .fr{animation:fast 2.4s steps(1) infinite}
@@ -190,228 +217,315 @@ h2{font-size:18px;margin:0;font-weight:700}
 .pace-hyper .fl{position:absolute;inset:0;background:#fff;opacity:0;animation:flash 1.2s linear infinite}
 @keyframes hyper{0%{transform:scale(1)}25%{transform:scale(1.25) rotate(-2deg)}50%{transform:scale(1.05) translateX(-6px)}75%{transform:scale(1.32) translateY(6px)}}
 @keyframes flash{0%,24%{opacity:0}25%{opacity:.35}30%,100%{opacity:0}}
-.pacec .t{margin-top:8px}
+.pacec .t{margin-top:9px}
 
-/* المقاس */
-.orc{padding:12px;display:flex;align-items:center;gap:12px}
-.shape{display:block;flex:none;border:2px solid var(--ink2);border-radius:5px;background:var(--surface2)}
-.opt.on .shape{border-color:var(--acc);background:var(--acc-soft)}
+/* Format */
+.orc{padding:13px;display:flex;align-items:center;gap:12px}
+.shape{display:block;flex:none;border:2px solid var(--ink2);border-radius:5px;background:var(--bg2)}
+.opt.on .shape{border-color:var(--navy);background:rgba(252,163,17,.35)}
 
-/* الأصوات */
-.voices{margin-top:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+/* Stimmen */
+.voices{margin-top:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);overflow:hidden;padding:2px 0}
 .voices[hidden]{display:none}
-.vgroup{padding:10px 12px;border-top:1px solid var(--line)}
-.vgroup:first-child{border-top:0}
-.vgroup h3{margin:0 0 6px;font-size:13px;color:var(--ink3);font-weight:500}
+.voices>.sub{margin:12px 14px 8px}
+.voices>.seg{margin:0 14px}
+#vlist{padding:6px 14px 4px}
+.vgroup{padding:8px 0}
+.vgroup h3{margin:0 0 8px;font-size:14px;color:var(--ink3);font-weight:700}
 .vrow{display:flex;flex-wrap:wrap;gap:8px}
-.vopt{display:flex;align-items:center;gap:8px;padding:6px 6px 6px 12px;border-radius:999px}
-.vopt .t{font-weight:500;font-size:14px}
-.vopt .d{display:inline;font-size:12px}
-.play{width:30px;height:30px;border-radius:50%;border:0;background:var(--surface2);display:grid;place-items:center;cursor:pointer;flex:none}
-.play svg{width:13px;height:13px}
-.play.busy{animation:spin 1s linear infinite}
+.vopt{display:flex;align-items:center;gap:8px;padding:6px 14px 6px 6px;border-radius:999px}
+.vopt .t{font-weight:700;font-size:14px}
+.vopt .d{display:inline;font-size:12.5px}
+.play{width:30px;height:30px;border-radius:50%;border:0;background:var(--navy);color:#fff;display:grid;place-items:center;cursor:pointer;flex:none}
+.play svg{width:12px;height:12px}
+.play.busy{animation:spin 1s linear infinite;background:var(--amber);color:var(--navy)}
 .vopt[hidden]{display:none!important}
-.vauto{margin:10px 0 4px;border-style:dashed}
+.vauto{margin:8px 0 4px;border-style:dashed;padding:10px 14px}
 @keyframes spin{to{transform:rotate(360deg)}}
-.voices details.more{border-top:1px solid var(--line)}
-.voices summary{padding:10px 12px;cursor:pointer;font-size:13px;font-weight:700;color:var(--ink2);list-style-position:inside}
-.vnote{padding:9px 12px;font-size:12.5px;color:var(--ink3);background:var(--surface2)}
+.voices details.more{border-top:1px solid var(--line);margin-top:6px}
+.voices summary{padding:12px 0;cursor:pointer;font-size:14px;font-weight:700;color:var(--ink2)}
+.vnote{padding:11px 14px;font-size:13px;color:var(--ink3);background:var(--bg2);margin-top:6px}
 
-/* كرت النهاية */
-.switch{display:inline-flex;align-items:center;gap:10px;cursor:pointer;font-weight:700;user-select:none}
+/* Schalter */
+.switch{display:inline-flex;align-items:center;gap:12px;cursor:pointer;font-weight:700;user-select:none}
 .switch input{position:absolute;opacity:0}
-.switch .k{width:44px;height:26px;border-radius:999px;background:var(--line);position:relative;transition:background .15s}
-.switch .k::after{content:"";position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:right .15s}
-.switch input:checked+.k{background:var(--acc)}
-.switch input:checked+.k::after{right:21px}
-.endf{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:12px}
+.switch .k{width:46px;height:27px;border-radius:999px;background:var(--line2);position:relative;transition:background .15s;flex:none}
+.switch .k::after{content:"";position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .15s}
+.switch input:checked+.k{background:var(--navy)}
+.switch input:checked+.k::after{left:22px;background:var(--amber)}
+.endf{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:14px}
 .endf[hidden]{display:none}
 
-/* الشريط السفلي */
-.bar{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);z-index:20;padding-bottom:env(safe-area-inset-bottom)}
-.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px}
-.prog{display:flex;align-items:center;gap:10px;min-width:0}
-.prog .meter{width:90px;height:6px;border-radius:9px;background:var(--line);overflow:hidden;flex:none}
-.prog .meter i{display:block;height:100%;width:0;background:var(--acc);transition:width .25s}
-.prog span{color:var(--ink2);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar .btn-pri{padding:12px 22px}
+/* Live-Vorschau im Reel-Rahmen */
+.pv-wrap{position:sticky;top:84px}
+.pv-label{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);margin:0 0 12px}
+.pv-label::before{content:"";width:8px;height:8px;border-radius:50%;background:#E5484D;box-shadow:0 0 0 4px rgba(229,72,77,.18);animation:rec 1.6s ease-in-out infinite}
+@keyframes rec{50%{box-shadow:0 0 0 7px rgba(229,72,77,0)}}
+.pv{width:100%;max-width:290px;margin:0 auto}
+.pv-frame{border:7px solid var(--navy);border-radius:34px;overflow:hidden;position:relative;aspect-ratio:9/16;background:#222;box-shadow:0 24px 50px rgba(20,33,61,.28)}
+:root[data-theme="dark"] .pv-frame,:root:not([data-theme="light"]) .pv-frame{border-color:#2A3A63}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .pv-frame{border-color:var(--navy)}}
+.pv-frame .phone{position:absolute;inset:0;aspect-ratio:auto;border-radius:0}
+.pv .phone .cap{font-size:17px;bottom:15%}
+.pv.cap-shadow .phone .cap{font-size:19px}.pv.cap-big .phone .cap{font-size:40px;bottom:17%}
+.pv-hook{position:absolute;left:10px;right:10px;top:34px;z-index:3;background:var(--p-bg);color:var(--p-ink);border-radius:10px;padding:9px 11px;font-family:var(--p-font),'Inter',sans-serif;box-shadow:0 8px 18px rgba(0,0,0,.28)}
+.pv-hook small{display:flex;align-items:center;gap:5px;font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--p-acc);margin-bottom:3px}
+.pv-hook small::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--p-acc)}
+.pv-hook b{display:block;font-size:14px;line-height:1.2;font-weight:800}
+.pv-prog{position:absolute;left:10px;right:10px;bottom:11px;height:4px;border-radius:2px;background:rgba(255,255,255,.28);z-index:3;overflow:hidden}
+.pv-prog i{display:block;height:100%;width:0;background:var(--p-acc);animation:prog 5s linear infinite}
+@keyframes prog{to{width:100%}}
+.pv-handle{position:absolute;left:12px;bottom:24px;z-index:3;font-family:var(--p-font),'Inter',sans-serif;font-weight:800;font-size:11px;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.pv-notch{position:absolute;left:50%;top:7px;transform:translateX(-50%);width:62px;height:6px;border-radius:99px;background:rgba(0,0,0,.45);z-index:4}
+.pv-meta{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:14px}
+.pv-meta span{font-size:12px;font-weight:700;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--ink2)}
+.pv-note{text-align:center;color:var(--ink3);font-size:12.5px;margin:10px auto 0;max-width:250px}
 
-/* شاشة النهاية */
-.done-ov{position:fixed;inset:0;background:var(--bg);display:none;place-items:center;z-index:50;padding:16px;text-align:center}
+/* Fußleiste */
+.bar{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);z-index:20;padding-bottom:env(safe-area-inset-bottom)}
+.bar[hidden]{display:none}
+.bar .in{max-width:1120px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:14px}
+.bar .stat{flex:1;color:var(--ink2);font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .stat b{color:var(--ink)}
+
+/* Fertig-Overlay */
+.done-ov{position:fixed;inset:0;background:var(--bg);display:none;place-items:center;z-index:50;padding:20px;text-align:center}
 .done-ov.show{display:grid}
-.done-ov .ok{width:72px;height:72px;border-radius:50%;background:var(--ok);color:#fff;display:grid;place-items:center;margin:0 auto 18px}
-.done-ov .ok svg{width:36px;height:36px}
-.done-ov h2{font-size:24px;margin-bottom:6px}
-.done-ov p{color:var(--ink2);margin:0 auto;max-width:420px}
-.done-ov pre{direction:ltr;text-align:left;max-width:560px;max-height:40vh;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:12px;margin:14px auto 0;white-space:pre-wrap;word-break:break-word}
-.toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:40;max-width:calc(100% - 32px);text-align:center}
+.done-ov .ok{width:78px;height:78px;border-radius:50%;background:var(--amber);color:var(--navy);display:grid;place-items:center;margin:0 auto 20px;box-shadow:0 10px 30px rgba(252,163,17,.4)}
+.done-ov .ok svg{width:38px;height:38px}
+.done-ov h2{font-size:30px;font-weight:800;margin-bottom:8px}
+.done-ov p{color:var(--ink2);margin:0 auto;max-width:440px}
+.done-ov pre{direction:ltr;text-align:left;max-width:560px;max-height:40vh;overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px;font-size:12px;margin:16px auto 0;white-space:pre-wrap;word-break:break-word}
+.toast{position:fixed;bottom:96px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 18px;border-radius:12px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:40;max-width:calc(100% - 32px);text-align:center}
 .toast.show{opacity:1}
 
-@media (max-width:560px){
-  body{font-size:14.5px}
+@media (max-width:980px){
+  .shell{grid-template-columns:1fr;gap:20px;padding-top:20px}
+  .pv-wrap{position:sticky;top:57px;z-index:12;order:-1;background:var(--bg);padding:8px 0 10px;margin:0 -14px;display:flex;justify-content:center;border-bottom:1px solid var(--line)}
+  body:not([data-step="1"]) .pv-wrap{display:none}
+  .pv{max-width:96px}
+  .pv-frame{border-width:4px;border-radius:18px}
+  .pv-hook{left:5px;right:5px;top:14px;padding:3px 5px;border-radius:6px}.pv-hook b{font-size:6.5px}.pv-hook small{font-size:5px;margin-bottom:1px}
+  .pv-notch,.pv-handle{display:none}.pv-prog{left:6px;right:6px;bottom:6px;height:3px}
+  .pv .phone .cap{font-size:7.5px;bottom:14%}.pv.cap-big .phone .cap{font-size:16px}.pv.cap-shadow .phone .cap{font-size:8px}
+  .pv-label,.pv-meta,.pv-note{display:none}
+  .main{max-width:none}
+}
+@media (max-width:640px){
+  body{font-size:15.5px}
+  .top .in{padding:10px 14px;gap:10px}
+  .brand img{height:24px}
+  .stp span{display:none}.stp{padding:4px}
+  .paths{grid-template-columns:1fr}
   .g-cap{grid-template-columns:repeat(3,1fr);gap:8px}
   .capc{padding:6px}.capc .d{display:none}
   .phone .cap{font-size:12px;left:4%;right:4%;bottom:7%}.cap-shadow .cap{font-size:13px}.cap-big .cap{font-size:24px}
-  #paces{grid-template-columns:repeat(2,1fr)}
-  #ors{grid-template-columns:repeat(3,1fr);gap:8px}
-  .orc{flex-direction:column;align-items:flex-start;gap:8px;padding:10px}.orc .d{font-size:11px}
-  .g-2{grid-template-columns:1fr 1fr}.g-2 .fontc .s{font-size:18px}
   .g-pal{grid-template-columns:repeat(2,1fr)}
   .g-font{grid-template-columns:1fr}
-  .custom{grid-template-columns:1fr 1fr 1fr;gap:6px}
-  .cpick{padding:8px}
-  .prog .meter{display:none}
-  .qs{margin-right:0}
+  .custom{gap:6px}.cpick{padding:8px}
+  .orc{flex-direction:column;align-items:flex-start;gap:8px;padding:10px}
+  .bar .in{padding:10px 14px}
+  .bar .stat{display:none}.bar .in{justify-content:space-between}
+  .shell{padding-left:14px;padding-right:14px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <form id="f" autocomplete="off" onsubmit="return false">
-<div class="wrap">
 
-<header>
-  <div>
-    <h1>Bevor wir starten: Zeig mir deinen Stil</h1>
-    <p class="lead">Höchstens zwei Minuten. Was du nicht wählst, entscheide ich passend zum Video, und du kannst es später mit „ändere meine Einstellungen“ anpassen.</p>
-  </div>
+<header class="top"><div class="in">
+  <a class="brand" href="https://viralio.de" target="_blank" rel="noopener" aria-label="Viralio"><img src="data:image/png;base64,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" alt="Viralio" width="111" height="28"></a>
+  <nav class="steps" aria-label="Schritte">
+    <button type="button" class="stp on" data-go="0"><i>•</i><span>Start</span></button>
+    <button type="button" class="stp" data-go="1"><i>1</i><span>Dein Look</span></button>
+    <button type="button" class="stp" data-go="2"><i>2</i><span>Dein Video</span></button>
+    <button type="button" class="stp" data-go="3"><i>3</i><span>Ton &amp; Abschluss</span></button>
+  </nav>
   <button type="button" class="iconbtn" id="themeBtn" aria-label="Dunkel- und Hellmodus">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
   </button>
-</header>
+</div></header>
 
-<div class="quick">
-  <label for="note">Schreib, was du willst – den Rest übernehme ich</label>
-  <textarea id="note" name="note" placeholder="Zum Beispiel: Anzeige für mein Restaurant, Logofarben Rot und Weiß, schneller Rhythmus, am Ende „Jetzt reservieren“"></textarea>
-  <div class="row">
-    <span class="hint">Willst du abkürzen? Schreib hier und drück „Überspringen“ – oder mach unten weiter.</span>
-    <button type="button" class="btn btn-ghost" id="skipBtn">Fragen überspringen und starten</button>
+<div class="shell">
+<div class="main">
+
+<!-- Start -->
+<div class="chapter" data-ch="0">
+  <p class="eyebrow">Einmal einrichten, danach läuft es</p>
+  <h1>Wie sollen deine Videos <em>aussehen?</em></h1>
+  <p class="lead">Das dauert etwa zwei Minuten. Alles ist optional: Was du auslässt, entscheide ich passend zum Video. Du kannst es später jederzeit ändern.</p>
+  <div class="paths">
+    <div class="card">
+      <span class="tag hot">Am schnellsten</span>
+      <h2>Ich beschreibe es kurz</h2>
+      <p>Ein Satz reicht: Branche, Farben, Tempo, was am Ende stehen soll.</p>
+      <textarea id="note" name="note" class="grow" placeholder="Zum Beispiel: Reels für mein Restaurant, Farben Rot und Weiß, schneller Rhythmus, am Ende „Jetzt reservieren“"></textarea>
+      <button type="button" class="btn btn-pri" id="skipBtn">Mit diesem Satz starten</button>
+    </div>
+    <div class="card">
+      <span class="tag">Ca. 2 Minuten</span>
+      <h2>Ich wähle selbst</h2>
+      <p>Drei kurze Schritte mit Live-Vorschau: erst dein Look, dann dein Video, dann Ton und Schluss.</p>
+      <div class="grow"></div>
+      <button type="button" class="btn btn-navy" data-go="1">Schritt für Schritt wählen
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
   </div>
 </div>
 
-<!-- 1 الهوية -->
-<section class="q" data-g="identity">
-  <div class="qh"><span class="qn">1</span><h2>Deine Farben</h2></div>
-  <p class="qs">Alle Karten und Texte im Video nehmen diese Farben. Dein Bild selbst wird nicht eingefärbt.</p>
-  <div class="tabs" role="tablist">
-    <button type="button" class="tab" role="tab" data-tab="palette" aria-selected="true">Fertige Paletten</button>
-    <button type="button" class="tab" role="tab" data-tab="custom" aria-selected="false">Selbst wählen</button>
-    <button type="button" class="tab" role="tab" data-tab="url" aria-selected="false">Von meiner Website oder meinem Account</button>
-  </div>
-  <div class="panel" data-panel="palette"><div class="grid g-pal" id="pals"></div></div>
-  <div class="panel" data-panel="custom" hidden>
-    <div class="custom">
-      <label class="cpick"><small>Hintergrund</small><input type="color" name="c_bg" value="#111827"></label>
-      <label class="cpick"><small>Text</small><input type="color" name="c_ink" value="#F9FAFB"></label>
-      <label class="cpick"><small>Akzentfarbe</small><input type="color" name="c_acc" value="#22C55E"></label>
+<!-- 1 Dein Look -->
+<div class="chapter" data-ch="1" hidden>
+  <p class="eyebrow">Schritt 1 von 3</p>
+  <h2 class="chap-h">Dein Look</h2>
+  <p class="chap-s">Farben, Schrift und Untertitel. Die Live-Vorschau zeigt dir sofort, wie es wirkt.</p>
+
+  <section class="q" data-g="identity">
+    <div class="qh"><h2>Welche Farben trägt dein Video?</h2><span class="qdone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div>
+    <p class="qs">Karten, Untertitel und Grafiken nehmen diese Farben. Dein Video selbst bleibt unverändert.</p>
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab" role="tab" data-tab="palette" aria-selected="true">Fertige Palette</button>
+      <button type="button" class="tab" role="tab" data-tab="custom" aria-selected="false">Eigene Farben</button>
+      <button type="button" class="tab" role="tab" data-tab="url" aria-selected="false">Von Website oder Instagram</button>
     </div>
-    <p class="cwarn" id="cwarn" hidden>Die Akzentfarbe liegt zu nah am Hintergrund – das hervorgehobene Wort wäre schlecht zu sehen. Probier eine dunklere oder hellere Farbe.</p>
-  </div>
-  <div class="panel" data-panel="url" hidden>
-    <div class="field">
-      <input type="url" name="url" class="ltr" placeholder="https://instagram.com/deinname  oder  https://deineseite.de" inputmode="url">
-      <small>Ich lese Farben, Schrift und Logo aus dem Link und zeige sie dir, bevor ich sie benutze.</small>
+    <div class="panel" data-panel="palette"><div class="grid g-pal" id="pals"></div></div>
+    <div class="panel" data-panel="custom" hidden>
+      <div class="custom">
+        <label class="cpick"><small>Hintergrund</small><input type="color" name="c_bg" value="#14213D"></label>
+        <label class="cpick"><small>Text</small><input type="color" name="c_ink" value="#FAF9F5"></label>
+        <label class="cpick"><small>Akzentfarbe</small><input type="color" name="c_acc" value="#FCA311"></label>
+      </div>
+      <p class="cwarn" id="cwarn" hidden>Die Akzentfarbe liegt zu nah am Hintergrund – das hervorgehobene Wort wäre schlecht zu sehen. Probier eine dunklere oder hellere Farbe.</p>
     </div>
-  </div>
-  <div class="logo-row">
-    <div class="logo-prev" id="logoPrev">Logo</div>
-    <label class="btn btn-ghost filebtn">Logo hochladen (optional)<input type="file" id="logoIn" accept="image/png,image/jpeg,image/webp,image/svg+xml"></label>
-  </div>
-</section>
+    <div class="panel" data-panel="url" hidden>
+      <div class="field">
+        <input type="url" name="url" class="ltr" placeholder="https://instagram.com/deinname  oder  https://deineseite.de" inputmode="url">
+        <small>Ich lese Farben, Schrift und Logo aus dem Link und zeige sie dir, bevor ich sie benutze.</small>
+      </div>
+    </div>
+    <div class="logo-row">
+      <div class="logo-prev" id="logoPrev">Logo</div>
+      <label class="btn btn-ghost filebtn">Logo hochladen (optional)<input type="file" id="logoIn" accept="image/png,image/jpeg,image/webp,image/svg+xml"></label>
+    </div>
+  </section>
 
-<!-- 2 الخط -->
-<section class="q" data-g="font">
-  <div class="qh"><span class="qn">2</span><h2>Schrift</h2></div>
-  <p class="qs">Alle unterstützen Umlaute und ß. Wähle die, die zu dir passt.</p>
-  <div class="grid g-font" id="fonts"></div>
-</section>
+  <section class="q" data-g="font">
+    <div class="qh"><h2>Welche Schrift passt zu dir?</h2><span class="qdone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div>
+    <p class="qs">Gilt für Untertitel, Karten und Titel. Alle Schriften beherrschen Umlaute und ß.</p>
+    <div class="grid g-font" id="fonts"></div>
+  </section>
 
-<!-- 3 الكابشن -->
-<section class="q" data-g="capStyle">
-  <div class="qh"><span class="qn">3</span><h2>Form der Untertitel</h2></div>
-  <p class="qs">Das Wort färbt sich im Moment der Aussprache. Die Vorschau zeigt deine Farben und deine Schrift von oben.</p>
-  <div class="grid g-cap" id="caps"></div>
-</section>
-
-<!-- 5 الإيقاع -->
-<section class="q" data-g="pace">
-  <div class="qh"><span class="qn">4</span><h2>Schnittrhythmus</h2></div>
-  <p class="qs">Wie oft sich das Bild bewegt und wechselt.</p>
-  <div class="grid g-3" id="paces"></div>
-</section>
-
-<!-- 6 نوع الفيديو -->
-<section class="q" data-g="content">
-  <div class="qh"><span class="qn">5</span><h2>Art des Videos</h2></div>
-  <p class="qs">Wählst du nichts, erkenne ich es am Clip selbst.</p>
-  <div class="chips" id="ctypes"></div>
-  <div class="sub">Kommt jemand im Video vor?</div>
-  <div class="seg" id="persons"></div>
-</section>
-
-<!-- 7 المقاس -->
-<section class="q" data-g="orientation">
-  <div class="qh"><span class="qn">6</span><h2>Format</h2></div>
-  <p class="qs">Du kannst mehrere wählen.</p>
-  <div class="grid g-3" id="ors"></div>
-</section>
-
-<!-- 8 وين تنشر -->
-<section class="q" data-g="platforms">
-  <div class="qh"><span class="qn">7</span><h2>Wo veröffentlichst du?</h2></div>
-  <p class="qs">Damit ich den Text von den Buttons jeder Plattform fernhalte. Mehrere sind in Ordnung.</p>
-  <div class="chips" id="plats"></div>
-  <div class="sub">Länge des Videos</div>
-  <div class="seg" id="lens"></div>
-</section>
-
-<!-- 9 الصوت -->
-<section class="q" data-g="audio">
-  <div class="qh"><span class="qn">8</span><h2>Ton</h2></div>
-  <p class="qs">Ein Sprecher ist nur nötig, wenn im Video niemand spricht.</p>
-  <div class="sub" style="margin-top:4px">Sprecherstimme</div>
-  <div class="seg" id="vmodes"></div>
-  <div class="voices" id="voices" hidden>
-    <div class="sub">Männliche oder weibliche Stimme?</div>
-    <div class="seg" id="vsexes"></div>
-    <div id="vlist"></div>
-  </div>
-  <div class="sub">Hintergrund-Audiodatei</div>
-  <div class="seg" id="bgs"></div>
-  <div class="sub">Soundeffekte (Whoosh, Schlag, Klick)</div>
-  <div class="seg" id="sfxs"></div>
-</section>
-
-<!-- 10 كرت النهاية -->
-<section class="q" data-g="endCard">
-  <div class="qh"><span class="qn">9</span><h2>Schlusskarte</h2></div>
-  <p class="qs">Die letzten Sekunden des Videos: dein Account und ein Aufruf zur Interaktion. Optional.</p>
-  <label class="switch"><input type="checkbox" name="end_on" id="endOn"><span class="k"></span><span>Ich möchte eine Schlusskarte</span></label>
-  <div class="endf" id="endf" hidden>
-    <div class="field"><small>Dein Account</small><input type="text" name="handle" class="ltr" placeholder="@yourname"></div>
-    <div class="field"><small>Der letzte Satz – kurz, dann erscheint er groß</small><input type="text" name="cta" maxlength="60" placeholder="Folge mir für Teil 2"></div>
-    <div class="field"><small>Wort, das man kommentieren soll (optional)</small><input type="text" name="word" placeholder="INFO"></div>
-  </div>
-</section>
-
-<!-- 11 الحركات -->
-<section class="q" data-g="moves">
-  <div class="qh"><span class="qn">10</span><h2>Bewegungen</h2></div>
-  <p class="qs">Ich habe eine Bank mit 100 Bewegungen. Für jedes Video wähle ich eine Palette: 3 Grundbewegungen, um die sich alles dreht, Akzente für besondere Momente – und nichts wiederholt sich von Video zu Video.</p>
-  <label class="switch"><input type="checkbox" name="movesOn" id="movesOn"><span class="k"></span><span>Ich möchte die Bewegungen selbst wählen</span></label>
-  <div id="movesf" hidden style="margin-top:12px">
-    <p class="qs" style="margin:0 0 10px">Öffne die Bank und drück „Will ich“ bei denen, die du magst, und „Nie“ bei denen, die du nicht willst, und speichere dort. Aus dem Rest wähle ich passend zum Schnitt.</p>
-    <a class="btn btn-ghost" href="/moves/?from=onboard" target="_blank" rel="noopener" style="display:inline-flex;text-decoration:none">Bewegungsbank öffnen</a>
-    <span id="movesSaved" style="margin-inline-start:10px;color:var(--ink2);font-size:14px"></span>
-  </div>
-</section>
-
+  <section class="q" data-g="capStyle">
+    <div class="qh"><h2>Wie sollen die Untertitel aussehen?</h2><span class="qdone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div>
+    <p class="qs">Das gesprochene Wort leuchtet in deiner Akzentfarbe auf – so, wie es später im Video läuft.</p>
+    <div class="grid g-cap" id="caps"></div>
+  </section>
 </div>
 
-<div class="bar"><div class="wrap">
-  <div class="prog"><div class="meter"><i id="meterI"></i></div><span id="progT">Alles automatisch – wähle nur, was dir wichtig ist</span></div>
-  <button type="button" class="btn btn-pri" id="saveBtn">Speichern und loslegen
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+<!-- 2 Dein Video -->
+<div class="chapter" data-ch="2" hidden>
+  <p class="eyebrow">Schritt 2 von 3</p>
+  <h2 class="chap-h">Dein Video</h2>
+  <p class="chap-s">Tempo, Art und Format. Damit schneide ich passend zu deinem Kanal.</p>
+
+  <section class="q" data-g="pace">
+    <div class="qh"><h2>Wie schnell soll der Schnitt sein?</h2><span class="qdone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div>
+    <p class="qs">Wie oft sich das Bild bewegt und wechselt.</p>
+    <div class="grid g-3" id="paces"></div>
+  </section>
+
+  <section class="q" data-g="content">
+    <div class="qh"><h2>Was für ein Video ist es?</h2><span class="qdone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div>
+    <p class="qs">Wählst du nichts, erkenne ich es am Clip selbst.</p>
+    <div class="chips" id="ctypes"></div>
+    <div class="sub">Ist jemand im Bild?</div>
+    <div class="seg" id="persons"></div>
+  </section>
+
+  <section class="q" data-g="orientation">
+    <div class="qh"><h2>In welchem Format?</h2><span class="qdone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div>
+    <p class="qs">Du kannst mehrere wählen.</p>
+    <div class="grid g-3" id="ors"></div>
+  </section>
+
+  <section class="q" data-g="platforms">
+    <div class="qh"><h2>Wo veröffentlichst du?</h2><span class="qdone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div>
+    <p class="qs">Ich halte Text von den Bedienelementen der Plattform fern. Mehrere sind in Ordnung.</p>
+    <div class="chips" id="plats"></div>
+    <div class="sub">Wie lang darf das Video sein?</div>
+    <div class="seg" id="lens"></div>
+  </section>
+</div>
+
+<!-- 3 Ton und Abschluss -->
+<div class="chapter" data-ch="3" hidden>
+  <p class="eyebrow">Schritt 3 von 3</p>
+  <h2 class="chap-h">Ton &amp; Abschluss</h2>
+  <p class="chap-s">Stimme, Musik, Schlusskarte und Bewegungen. Danach kann es losgehen.</p>
+
+  <section class="q" data-g="audio">
+    <div class="qh"><h2>Brauchst du einen Sprecher?</h2><span class="qdone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div>
+    <p class="qs">Nur nötig, wenn im Video niemand spricht.</p>
+    <div class="seg" id="vmodes"></div>
+    <div class="voices" id="voices" hidden>
+      <div class="sub">Männliche oder weibliche Stimme?</div>
+      <div class="seg" id="vsexes"></div>
+      <div id="vlist"></div>
+    </div>
+    <div class="sub">Hintergrund-Audiodatei</div>
+    <div class="seg" id="bgs"></div>
+    <div class="sub">Soundeffekte (Whoosh, Schlag, Klick)</div>
+    <div class="seg" id="sfxs"></div>
+  </section>
+
+  <section class="q" data-g="endCard">
+    <div class="qh"><h2>Soll am Ende eine Schlusskarte stehen?</h2><span class="qdone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div>
+    <p class="qs">Die letzten Sekunden: dein Account und ein Aufruf zum Handeln. Optional.</p>
+    <label class="switch"><input type="checkbox" name="end_on" id="endOn"><span class="k"></span><span>Ja, mit Schlusskarte</span></label>
+    <div class="endf" id="endf" hidden>
+      <div class="field"><small>Dein Account</small><input type="text" name="handle" class="ltr" placeholder="@deinname"></div>
+      <div class="field"><small>Der letzte Satz – kurz, dann erscheint er groß</small><input type="text" name="cta" maxlength="60" placeholder="Folge mir für Teil 2"></div>
+      <div class="field"><small>Wort, das man kommentieren soll (optional)</small><input type="text" name="word" placeholder="INFO"></div>
+    </div>
+  </section>
+
+  <section class="q" data-g="moves">
+    <div class="qh"><h2>Bewegungen</h2><span class="qdone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span></div>
+    <p class="qs">Standard: Ich stelle für jedes Video eine passende Palette aus 100 Bewegungen zusammen – nichts wiederholt sich. Du kannst die Auswahl auch selbst treffen.</p>
+    <label class="switch"><input type="checkbox" name="movesOn" id="movesOn"><span class="k"></span><span>Ich wähle die Bewegungen selbst</span></label>
+    <div id="movesf" hidden style="margin-top:14px">
+      <p class="qs" style="margin:0 0 12px">Öffne die Bank: „Will ich“ bei denen, die du magst, „Nie“ bei denen, die du nicht willst. Speichere dort – aus dem Rest wähle ich passend zum Schnitt.</p>
+      <a class="btn btn-ghost" href="/moves/?from=onboard" target="_blank" rel="noopener" style="text-decoration:none">Bewegungsbank öffnen</a>
+      <span id="movesSaved" style="margin-left:10px;color:var(--ink2);font-size:14px"></span>
+    </div>
+  </section>
+</div>
+
+</div><!-- /main -->
+
+<aside class="pv-wrap" aria-label="Live-Vorschau">
+  <p class="pv-label">Live-Vorschau</p>
+  <div class="pv cap-card" id="pv">
+    <div class="pv-frame">
+      <span class="pv-notch"></span>
+      <span class="phone"><span class="person"></span><span class="cap" id="pvCap"></span></span>
+      <div class="pv-hook"><small>Dein Hook</small><b>Die ersten zwei Sekunden entscheiden</b></div>
+      <span class="pv-handle" id="pvHandle">@deinname</span>
+      <div class="pv-prog"><i></i></div>
+    </div>
+    <div class="pv-meta"><span id="pvPal">Viralio Navy</span><span id="pvFont">Inter</span><span id="pvCapName">Karte</span></div>
+    <p class="pv-note">So wirken deine Farben, Schrift und Untertitel. Dein echtes Video läuft darunter.</p>
+  </div>
+</aside>
+</div><!-- /shell -->
+
+<div class="bar" id="bar" hidden><div class="in">
+  <button type="button" class="btn btn-ghost" id="backBtn">Zurück</button>
+  <div class="stat" id="progT"><b>Alles automatisch</b> – wähle nur, was dir wichtig ist</div>
+  <button type="button" class="btn btn-navy" id="nextBtn">Weiter
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+  <button type="button" class="btn btn-pri" id="saveBtn" hidden>Speichern und loslegen
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></button>
 </div></div>
 </form>
 
@@ -426,9 +540,10 @@ h2{font-size:18px;margin:0;font-weight:700}
 <div class="toast" id="toast"></div>
 
 <script>
-/* ═══════════ البيانات ═══════════ */
+/* ═══════════ Daten ═══════════ */
 const TICK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
-const PALETTES=[  /* محايدة — ولا وحدة منها هوية أحد */
+const PALETTES=[
+  {id:'viralio',    n:'Viralio Navy',     bg:'#14213D',ink:'#FAF9F5',acc:'#FCA311',clay:'#E08E00',mut:'#9AA5B8'},
   {id:'night-gold', n:'Nacht und Gold',   bg:'#101828',ink:'#F5F7FA',acc:'#F2B33D',clay:'#C98B18',mut:'#98A2B3'},
   {id:'paper-indigo',n:'Weiß und Indigo', bg:'#F7F8FC',ink:'#111827',acc:'#3B5BFD',clay:'#2A3FC0',mut:'#6B7280'},
   {id:'coal-lime',  n:'Kohle und Limette',bg:'#0E0F0C',ink:'#F4F4EF',acc:'#C6F432',clay:'#93B51F',mut:'#8C8F85'},
@@ -448,8 +563,8 @@ const FONTS=[
   {f:'Bebas Neue',n:'Bebas Neue',d:'Großbuchstaben für Titel'},
   {f:'Playfair Display',n:'Playfair Display',d:'elegant mit Serifen'},
 ];
-const FONT_SAMPLE='Lass dein Video für dich sprechen – 2026';
-const CAPS_ST=[  /* نفس أسماء المحرّك: theme.json ← capStyle */
+const FONT_SAMPLE='Lass dein Video für dich sprechen';
+const CAPS_ST=[  /* gleiche Namen wie die Engine: theme.json ← capStyle */
   {v:'card',     n:'Karte',      d:'Karte in deiner Farbe, das Wort färbt sich'},
   {v:'shadow',   n:'Schatten',   d:'groß und weiß, ohne Hintergrund'},
   {v:'big',      n:'Wort für Wort',d:'ein einziges riesiges Wort'},
@@ -491,14 +606,14 @@ const BGS=[{v:'auto',n:'Später entscheiden'},{v:'none',n:'Ohne'},{v:'own',n:'Ic
 const SFXS=[{v:'auto',n:'Automatisch'},{v:'on',n:'Einschalten'},{v:'off',n:'Ohne'}];
 const SERVER=location.protocol.startsWith('http');
 
-/* ═══════════ بناء الخيارات ═══════════ */
+/* ═══════════ Optionen bauen ═══════════ */
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function opt(type,name,v,inner,cls=''){return `<label class="opt ${cls}"><input type="${type}" name="${name}" value="${esc(v)}"><span class="tick">${TICK}</span>${inner}</label>`;}
 function simple(box,type,name,list){ $(box).innerHTML=list.map(o=>opt(type,name,o.v,`<span class="t">${o.n}</span>`)).join(''); }
 
 $('#pals').innerHTML=PALETTES.map(p=>opt('radio','palette',p.id,
-  `<span class="mini" style="background:${p.bg};color:${p.ink}"><b style="font-family:Inter">Willkommen</b><i style="background:${p.acc};color:${onColor(p.acc,p.ink,p.bg)}">Neu</i></span>
+  `<span class="mini" style="background:${p.bg};color:${p.ink}"><b style="font-family:'League Spartan',Inter">Willkommen</b><i style="background:${p.acc};color:${onColor(p.acc,p.ink,p.bg)}">Neu</i></span>
    <span class="dots">${[p.bg,p.ink,p.acc].map(c=>`<span style="background:${c}"></span>`).join('')}</span><span class="t">${p.n}</span>`,'pal')).join('');
 
 $('#fonts').innerHTML=opt('radio','font','auto',`<span class="s">Ich wähle sie passend zum Video</span><span class="n"><span class="t">Automatisch</span></span>`,'fontc auto')+
@@ -506,6 +621,7 @@ $('#fonts').innerHTML=opt('radio','font','auto',`<span class="s">Ich wähle sie 
    <span class="n"><span class="t" style="color:var(--ink)">${x.n}</span><span>${x.d}</span></span>`,'fontc')).join('');
 
 const capWords=CAP_WORDS.map((w,i)=>`<span class="w${i===0?' h':''}">${w}</span>`).join('');
+$('#pvCap').innerHTML=capWords;
 $('#caps').innerHTML=opt('radio','capStyle','auto',`<span class="phone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg></span><span class="t">Automatisch</span><span class="d">Ich wähle passend zum Video</span>`,'capc cap-auto')+
   CAPS_ST.map(c=>opt('radio','capStyle',c.v,`<span class="phone"><span class="person"></span><span class="cap">${capWords}</span></span><span class="t">${c.n}</span><span class="d">${c.d}</span>`,'capc cap-'+c.v)).join('');
 
@@ -525,13 +641,13 @@ $('#vlist').innerHTML=`<label class="opt vopt vauto"><input type="radio" name="v
   `<label class="opt vopt" data-sex="${sex==='Mann'?'m':'f'}"><input type="radio" name="voice" value="${id}"><button type="button" class="play" data-v="${id}" aria-label="${n} anhören"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button><span class="t">${n}</span><span class="d">${dial} · ${sex}</span></label>`).join('')}</div></div>${gi===VOICES.length-1?'</details>':''}`).join('')+
   `<div class="vnote" id="vnote">${SERVER?'Drück auf Abspielen, um die Probe zu hören (braucht Internet, beim ersten Mal zwei Sekunden).':'Die Proben laufen, wenn die Seite von Claude aus geöffnet wird.'} Die Stimmen sind kostenlos von Microsoft. Zahlen und Abkürzungen schreibe ich für die Stimme aus; ich probiere sie vorher aus und lasse dich hören.</div>`;
 
-/* ═══════════ الألوان والمعاينة ═══════════ */
+/* ═══════════ Farben und Vorschau ═══════════ */
 function hx(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16));}
 function toHex(a){return '#'+a.map(v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0')).join('').toUpperCase();}
 function lum(h){return hx(h).map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);}).reduce((s,v,i)=>s+v*[0.2126,0.7152,0.0722][i],0);}
 function contrast(a,b){const x=lum(a),y=lum(b);return (Math.max(x,y)+0.05)/(Math.min(x,y)+0.05);}
-function onColor(acc,ink,bg){ /* النص فوق لون التمييز — نفس on_accent بـ00_onboard.py حرفياً (ينكتب theme.onAcc والمحرّك يرسم فيه):
-  الأوضح من ألوانه (ink/bg) لو تباينه 4.5 وفوق، وإلا الأوضح من ألوانه + الأبيض + الأسود */
+function onColor(acc,ink,bg){ /* Textfarbe auf der Akzentfarbe – identisch mit on_accent in 00_onboard.py (wird als theme.onAcc geschrieben):
+  die klarere aus ink/bg bei Kontrast ab 4,5, sonst die klarste aus ink/bg/Weiß/Schwarz */
   const best=[ink,bg].reduce((b,c)=>contrast(c,acc)>contrast(b,acc)?c:b);
   if(contrast(best,acc)>=4.5) return best;
   return [ink,bg,'#FFFFFF','#111111'].reduce((b,c)=>contrast(c,acc)>contrast(b,acc)?c:b); }
@@ -548,14 +664,34 @@ function applyPreview(){
   const w=$('#cwarn'); if(w) w.hidden=!(idMode==='custom'&&(contrast(c.acc,c.bg)<1.8||contrast(onColor(c.acc,c.ink,c.bg),c.acc)<3));
   r.setProperty('--p-bg',c.bg); r.setProperty('--p-ink',c.ink); r.setProperty('--p-acc',c.acc); r.setProperty('--p-on',onColor(c.acc,c.ink,c.bg));
   const f=($('input[name=font]:checked')||{}).value; r.setProperty('--p-font',(f&&f!=='auto')?`'${f}'`:"'Inter'");
+  const cs=($('input[name=capStyle]:checked')||{}).value||'auto'; const st=cs==='auto'?'card':cs;
+  $('#pv').className='pv cap-'+st;
+  const pid=($('input[name=palette]:checked')||{}).value; const pn=idMode==='custom'?'Eigene Farben':idMode==='url'?'Aus Link':(PALETTES.find(x=>x.id===pid)||PALETTES[0]).n;
+  $('#pvPal').textContent=pn; $('#pvFont').textContent=(f&&f!=='auto')?f:'Inter';
+  const cn=(CAPS_ST.find(x=>x.v===st)||{}).n; $('#pvCapName').textContent=cn||'Karte';
+  const h=($('#f').handle.value||'').trim(); $('#pvHandle').textContent=h||'@deinname';
 }
-/* كلمة كلمة — نفس فكرة تظليل الكلمة المنطوقة */
+/* Wort für Wort – wie die Hervorhebung des gesprochenen Worts */
 let wi=0;
 setInterval(()=>{ wi=(wi+1)%(CAP_WORDS.length+2);
   $$('.phone .cap').forEach(cap=>[...cap.children].forEach((w,i)=>{w.classList.toggle('a',i===wi);w.classList.toggle('p',i<wi);}));
 },420);
 
-/* ═══════════ التفاعل ═══════════ */
+/* ═══════════ Ablauf in Schritten ═══════════ */
+let step=0; const CH=$$('.chapter'); const seen=new Set([0]);
+function go(n){
+  step=Math.max(0,Math.min(CH.length-1,n)); seen.add(step);
+  CH.forEach((c,i)=>c.hidden=i!==step);
+  $$('.stp').forEach((b,i)=>{b.classList.toggle('on',i===step); b.classList.toggle('seen',i!==step&&seen.has(i)&&i>0);});
+  $('#bar').hidden=step===0; $('#backBtn').hidden=step===0;
+  const last=step===CH.length-1; $('#nextBtn').hidden=last; $('#saveBtn').hidden=!last;
+  document.body.dataset.step=step; window.scrollTo({top:0,behavior:'smooth'}); progress();
+}
+$$('[data-go]').forEach(b=>b.addEventListener('click',()=>go(+b.dataset.go)));
+$('#nextBtn').addEventListener('click',()=>go(step+1));
+$('#backBtn').addEventListener('click',()=>go(step-1));
+
+/* ═══════════ Interaktion ═══════════ */
 const touched=new Set();
 const GROUPS=['identity','font','capStyle','pace','content','orientation','platforms','audio','endCard','moves'];
 const groupOf={movesOn:'moves',palette:'identity',c_bg:'identity',c_ink:'identity',c_acc:'identity',url:'identity',font:'font',capStyle:'capStyle',pace:'pace',
@@ -564,8 +700,8 @@ const groupOf={movesOn:'moves',palette:'identity',c_bg:'identity',c_ink:'identit
 function syncOn(){ $$('.opt input').forEach(i=>i.closest('.opt').classList.toggle('on',i.checked)); }
 function progress(){
   GROUPS.forEach(g=>{const s=$(`section[data-g="${g}"]`); if(s) s.classList.toggle('done',touched.has(g));});
-  const n=touched.size; $('#meterI').style.width=(n/GROUPS.length*100)+'%';
-  $('#progT').textContent=n===0?'Alles automatisch – wähle nur, was dir wichtig ist':`${n} von ${GROUPS.length} gewählt – den Rest entscheide ich`;
+  const n=touched.size;
+  $('#progT').innerHTML=n===0?'<b>Alles automatisch</b> – wähle nur, was dir wichtig ist':`<b>${n} von ${GROUPS.length}</b> gewählt – den Rest entscheide ich`;
 }
 $('#f').addEventListener('change',e=>{
   const n=e.target.name; if(groupOf[n]) touched.add(groupOf[n]);
@@ -578,7 +714,8 @@ $('#f').addEventListener('change',e=>{
 });
 $('#f').addEventListener('input',e=>{ const n=e.target.name;
   if(['handle','cta','word','url'].includes(n)&&e.target.value.trim()) touched.add(groupOf[n]);
-  if(n&&n.startsWith('c_')){touched.add('identity'); applyPreview();} progress(); });
+  if(n&&n.startsWith('c_')){touched.add('identity');}
+  applyPreview(); progress(); });
 function setRadio(name,v){const i=$(`input[name="${name}"][value="${v}"]`); if(i){i.checked=true;} if(name==='voiceMode') $('#voices').hidden=v!=='tts'; syncOn();}
 
 $$('.tab').forEach(t=>t.addEventListener('click',()=>{
@@ -588,7 +725,7 @@ $$('.tab').forEach(t=>t.addEventListener('click',()=>{
   applyPreview(); progress();
 }));
 
-/* الشعار */
+/* Logo */
 let logoData=null;
 $('#logoIn').addEventListener('change',e=>{ const file=e.target.files[0]; if(!file) return;
   if(file.size>6*1024*1024){ toast('Das Logo ist zu groß – bitte unter 6 MB'); return; }
@@ -596,7 +733,7 @@ $('#logoIn').addEventListener('change',e=>{ const file=e.target.files[0]; if(!fi
     $('#logoPrev').innerHTML=`<img alt="" src="${rd.result}">`; touched.add('identity'); progress(); }; rd.readAsDataURL(file); });
 
 function filterVoices(){ const sx=val('voiceSex'); $$('#vlist .vopt[data-sex]').forEach(l=>{ l.hidden=(sx==='m'||sx==='f')&&l.dataset.sex!==sx; }); }
-/* عيّنات الأصوات */
+/* Stimmproben */
 let audio=null;
 $('#voices').addEventListener('click',async e=>{
   const b=e.target.closest('.play'); if(!b) return; e.preventDefault(); e.stopPropagation();
@@ -610,7 +747,7 @@ $('#voices').addEventListener('click',async e=>{
   finally{ b.classList.remove('busy'); }
 });
 
-/* الوضع الليلي */
+/* Dunkel- und Hellmodus */
 function themeInit(){ let t=null; try{t=localStorage.getItem('vae-theme');}catch(e){} if(t) document.documentElement.dataset.theme=t; }
 $('#themeBtn').addEventListener('click',()=>{ const dark=getComputedStyle(document.documentElement).colorScheme.includes('dark');
   const t=dark?'light':'dark'; document.documentElement.dataset.theme=t; try{localStorage.setItem('vae-theme',t);}catch(e){} });
@@ -618,7 +755,7 @@ themeInit();
 
 function toast(m){const t=$('#toast'); t.textContent=m; t.classList.add('show'); clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove('show'),2600);}
 
-/* ═══════════ الجمع والإرسال ═══════════ */
+/* ═══════════ Sammeln und Senden ═══════════ */
 const val=n=>{const i=$(`input[name="${n}"]:checked`); return i?i.value:'auto';};
 const vals=n=>$$(`input[name="${n}"]:checked`).map(i=>i.value);
 function collect(){
@@ -636,7 +773,7 @@ function collect(){
     content:{type:val('ctype'),person:val('person')},
     orientation:vals('orientation').length?vals('orientation'):['9:16'],
     platforms:vals('platforms'), length:val('length'),
-    voice:{mode:vm, lang:vm==='tts'?'de':null, gender:vm==='tts'?(val('voiceSex')||'auto'):null, tts:(vm==='tts'&&val('voice')&&val('voice')!=='auto')?val('voice'):null},   /* tts:null = كلود يجرّب الأصوات على النص ويختار — ما فيه صوت ثابت */
+    voice:{mode:vm, lang:vm==='tts'?'de':null, gender:vm==='tts'?(val('voiceSex')||'auto'):null, tts:(vm==='tts'&&val('voice')&&val('voice')!=='auto')?val('voice'):null},   /* tts:null = Claude probiert die Stimmen am Text und wählt – es gibt keine feste Stimme */
     bgAudio:val('bgAudio'), sfx:val('sfx'),
     endCard:{on:f.end_on.checked, handle:f.handle.value.trim(), cta:f.cta.value.trim(), word:f.word.value.trim()},
     answered:[...touched],
@@ -659,7 +796,7 @@ function showDone(obj,saved){
 $('#saveBtn').addEventListener('click',()=>send(collect()));
 $('#skipBtn').addEventListener('click',()=>send({version:1,skip:true,note:$('#note').value.trim()}));
 
-/* ═══════════ تعبئة من ملف سابق (لما يقول «غيّر إعداداتي») ═══════════ */
+/* ═══════════ Frühere Einstellungen laden („ändere meine Einstellungen“) ═══════════ */
 async function prefill(){
   if(!SERVER) return;
   let p=null; try{ const r=await fetch('/api/profile'); if(r.ok) p=await r.json(); }catch(e){}
@@ -674,21 +811,21 @@ async function prefill(){
   const R=(n,v)=>{ if(v&&v!=='auto') setRadio(n,v); };
   R('font',p.font); R('capStyle',p.capStyle); R('pace',p.pace);
   if(p.content){R('ctype',p.content.type);R('person',p.content.person);}
-  if(Array.isArray(p.orientation)&&p.orientation.length){   /* المحفوظ يستبدل الافتراضي (9:16) — لا يضيف عليه */
+  if(Array.isArray(p.orientation)&&p.orientation.length){   /* Das Gespeicherte ersetzt den Standard (9:16), es kommt nichts dazu */
     $$('input[name=orientation]').forEach(i=>{i.checked=p.orientation.includes(i.value);}); }
   if(Array.isArray(p.platforms)) $$('input[name=platforms]').forEach(i=>{i.checked=p.platforms.includes(i.value);});
   R('length',p.length); R('bgAudio',p.bgAudio); R('sfx',p.sfx);
-  if(p.voice){ R('voiceMode',p.voice.mode); if(p.voice.lang) R('voiceLang',p.voice.lang); if(p.voice.gender) R('voiceSex',p.voice.gender); filterVoices(); if(p.voice.tts){ setRadio('voice',p.voice.tts); const i=$(`input[name=voice][value="${p.voice.tts}"]`); const d=i&&i.closest('details'); if(d) d.open=true; } }
+  if(p.voice){ R('voiceMode',p.voice.mode); if(p.voice.gender) R('voiceSex',p.voice.gender); filterVoices(); if(p.voice.tts){ setRadio('voice',p.voice.tts); const i=$(`input[name=voice][value="${p.voice.tts}"]`); const d=i&&i.closest('details'); if(d) d.open=true; } }
   if(p.endCard&&p.endCard.on){ f.end_on.checked=true; $('#endf').hidden=false; f.handle.value=p.endCard.handle||''; f.cta.value=p.endCard.cta||''; f.word.value=p.endCard.word||''; }
   (p.answered||[]).forEach(g=>touched.add(g));
   syncOn(); applyPreview(); progress();
   toast('Deine früheren Einstellungen sind geladen – ändere, was du willst');
 }
-/* الافتراضي الظاهر */
+/* Sichtbarer Standard */
 setRadio('ctype','auto'); setRadio('person','auto'); setRadio('length','auto'); setRadio('voiceMode','auto'); setRadio('bgAudio','auto'); setRadio('sfx','auto');
 setRadio('font','auto'); setRadio('capStyle','auto'); setRadio('pace','auto');
 $('input[name=orientation][value="9:16"]').checked=true;
-syncOn(); applyPreview(); progress(); prefill();
+syncOn(); applyPreview(); progress(); go(0); prefill();
 </script>
 <script>
 (function(){ const on=document.getElementById('movesOn'), f=document.getElementById('movesf'), lab=document.getElementById('movesSaved');

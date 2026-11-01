@@ -37,8 +37,9 @@ SAMPLE_TEXT = "Hallo! Das ist meine Stimme. Ich kann dir das ganze Videoskript v
 SAMPLE_FUSHA = SAMPLE_TEXT   # فصحى مشكّلة — تطلع بلا غلط
 LOGO_EXT = {"image/png": ".png", "image/jpeg": ".jpg", "image/webp": ".webp", "image/svg+xml": ".svg"}
 
-# نفس لوحات الصفحة — لو وصل palette بلا colors نرجع لها
+# Dieselben Paletten wie auf der Seite – kommt eine palette ohne colors an, wird hier nachgeschlagen
 PALETTES = {
+    "viralio":      dict(bg="#14213D", ink="#FAF9F5", acc="#FCA311", clay="#E08E00", mut="#9AA5B8"),
     "night-gold":   dict(bg="#101828", ink="#F5F7FA", acc="#F2B33D", clay="#C98B18", mut="#98A2B3"),
     "paper-indigo": dict(bg="#F7F8FC", ink="#111827", acc="#3B5BFD", clay="#2A3FC0", mut="#6B7280"),
     "coal-lime":    dict(bg="#0E0F0C", ink="#F4F4EF", acc="#C6F432", clay="#93B51F", mut="#8C8F85"),
