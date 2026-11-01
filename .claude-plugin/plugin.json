@@ -1,0 +1,8 @@
+{
+  "name": "viralio-video",
+  "version": "1.0.0-alpha.1",
+  "description": "Videoschnitt auf Deutsch für Claude Code – 5 Skills: Talking-Head-Reels, 3D-Motion-Erklärvideos, Podcasts, Beat-Montagen, Cover & Thumbnails.",
+  "author": { "name": "Viralio", "url": "https://viralio.de" },
+  "license": "MIT",
+  "skills": ["./"]
+}

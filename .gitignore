@@ -1,0 +1,17 @@
+node_modules/
+*.mov
+*.mp4
+.DS_Store
+viralio-video.plugin
+!video-ad-editor/motion/moves/previews/*.mp4
+dist/
+# Swift-Tools werden lokal aus den .swift-Dateien gebaut (03_cut_zoom.py baut hdr2sdr) – nicht ins Repository
+video-ad-editor/scripts/hdr2sdr
+video-ad-editor/scripts/facetrack
+# deep-filter wird lokal geladen (--extras) – nicht ins Repository
+video-ad-editor/bin/
+
+# Render der Motion-Beispiele entsteht lokal (node render.js) – nicht ins Repository
+video-ad-editor/motion/examples/*/renders/
+_test/
+_motion/

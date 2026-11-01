@@ -1,0 +1,12 @@
+{
+  "name": "viralio-plugins",
+  "owner": { "name": "Viralio", "url": "https://viralio.de" },
+  "description": "Viralio Plugins für Claude Code",
+  "plugins": [
+    {
+      "name": "viralio-video",
+      "source": "./",
+      "description": "5 Skills: Reels aus Talking-Videos · 3D-Motion-Erklärvideos · Podcasts · Beat-Montage · Cover & Thumbnails"
+    }
+  ]
+}
