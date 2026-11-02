@@ -34,7 +34,7 @@ let BAR=true;         /* شريط التقدّم (theme.json ← bar:false يش�
 let BADGE_UNTIL=0;    /* ⛔ شارة الحساب مطفية (قرار ماجد ٢ سبتمبر): اسمه ظاهر بالمنصة نفسها
                          وبكرت النهاية، وفوق الشاشة مساحة للرسم. theme.json ← badgeUntil:3 تعيدها */
 let CAPS=[],VEND=0,OUTRO=0,DUR=0;
-let THEME_RAW=null;
+let THEME_RAW=null, CAPY=1180, OSP=1.8;
 /* 6.1: motion-kit.js (وأي سكربت خارجي) يقرأ الكانفس وألوان الثيم من window — و const/let العامة ما تصير خصائص window،
    فكان MK.* يطيح («reading 'save'») أو يرسم بألوان افتراضية، وكل مشروع يرقّعها بسطر بمشاهده. الحين تنقرا مباشرة (وتتحدّث مع init) */
 ['X','BG','INK','ACC','CLAY','MUT','FONT'].forEach(n=>{ try{ Object.defineProperty(window,n,{get:new Function('return '+n),configurable:true}); }catch(e){} });
@@ -54,6 +54,8 @@ function init(d){
   if(typeof t.capStill==='boolean') CAP_STILL=t.capStill;
   if(typeof t.bar==='boolean') BAR=t.bar;
   if(typeof t.hookZoom==='number') HOOK_END=t.hookZoom;
+  if(typeof t.capY==='number'){ CAPY=t.capY; CHUNK_Y=t.capY-60; }   /* Untertitel-Unterkante (Standard 1180, vorher 1460 = zu weit unten) */
+  if(typeof t.outroSpeed==='number'&&t.outroSpeed>0) OSP=t.outroSpeed;   /* Schlusskarte schneller (Standard 1.8) */
   if(t.outro){ OUTRO_T={...OUTRO_T,...t.outro}; if(Array.isArray(t.outro.chips)) RECAP=t.outro.chips.map(c=>[c]); }   /* v3.5: كرت الختام من الثيم (الافتراضي إعلان السكل — ريل بودكاست لازم يغيّره) */   /* زوم الهوك + انتقال بعده (ثواني) — شوف hookZoom تحت */
   if(t.logo){const L=document.getElementById('LOGO'); if(L.getAttribute('src')!==t.logo) L.src=t.logo;}
   if(FONT!=='Inter'){const l=document.createElement('link');l.rel='stylesheet';
@@ -314,7 +316,7 @@ function _capRest(c,t){
      window.CHUNK_BREAK={48:[3]}  ← الجملة 48 (من صفر، ترتيب caps.json) تبدأ قطعة جديدة عند كلمتها 3 (من صفر)
    الكبسولة تبقى لين القطعة الجاية لو بينهم أقل من 0.8 ث (الشاشة ما تفضى وترجع)، وإلا تقعد 0.45 ث بعد آخر كلمة (0.6 لآخر قطعة). theme.json ← "capStyle":"chunk".
    مكانها: مركزها 1395 بملء الشاشة · فوق كرت الفيديو بوضع الكرت · فوق راسه بأنماط القصّ · window.CAP_Y_AT=t=>y يحدده بلحظات معيّنة. */
-const CHUNK_MAX=4, CHUNK_Y=1395;
+const CHUNK_MAX=4; let CHUNK_Y=1120;
 function _chunks(){ const out=[], BR=window.CHUNK_BREAK||{};
   CAPS.forEach((c,ci)=>{ let cur=[]; const push=()=>{ if(cur.length){ out.push({ci,w:cur,s:cur[0].s,e:cur[cur.length-1].e}); cur=[]; } };
     (c.w||[]).forEach((w,i)=>{ const gap=cur.length?w.s-cur[cur.length-1].e:0;
@@ -427,7 +429,7 @@ function caption(t){
     const LH2=Math.round(FS2*1.33); const bh2=LL.length*LH2;
     /* ⛔ قاعدة ماجد (23 سبتمبر): الكابشن ما ينكتب على وجهه أبداً. الستايلات بلا كرت كانت تثبّت عند 1400
        مهما كان وضع الفيديو، فبوضع الكرت (R_DOWN/R_LOWER) تطيح الكلمات على وجهه. الحين تطلع فوق الكرت. */
-    const _Rc=vtarget(t), by2=(_Rc.y>700&&!_Rc.off)?Math.max(200,_Rc.y-46-bh2):(1400-bh2);
+    const _Rc=vtarget(t), by2=(_Rc.y>700&&!_Rc.off)?Math.max(200,_Rc.y-46-bh2):(CAPY-60-bh2);
     X.save();X.globalAlpha=a;X.translate(540,by2+bh2/2+dy);X.scale(sc,sc);X.translate(-540,-(by2+bh2/2));
     X.textAlign='right';X.textBaseline='middle'; X.font='900 '+FS2+'px '+FONT;
     let lastX=null,lastY=null;
@@ -439,7 +441,7 @@ function caption(t){
   const _R=vtarget(t), LOW=_R.y>700&&!_R.off;   /* R_OFF: الكابشن يبقى تحت عند 1460 · مستطيل الهدف لا المتحرّك: الكابشن يثبت بمكانه من أول فريم بلا قفزة */          /* R_DOWN أو R_LOWER → الكابشن فوق كرت الفيديو */          /* الفيديو تحت → الكابشن فوقه */
   const CUT=(cutoutActive(t)||headoutActive(t))&&PTOP>200;   /* الكابشن فوق راسه بالوضعين */
   const SEAM=0;   /* ⛔ 23 سبتمبر: كان الكرت يركب 42٪ منه على حافة الفيديو فيغطي جبهة المتحدث — الحين فوق الكرت بالكامل */
-  const bx=540-bw/2,by=(CUT?PTOP-46:(LOW?_R.y-60+SEAM:1460))-bh;   /* 1460 عادةً · وعلى حافة الفيديو بوضع «الفيديو تحت» */
+  const bx=540-bw/2,by=(CUT?PTOP-46:(LOW?_R.y-60+SEAM:CAPY))-bh;   /* 1460 عادةً · وعلى حافة الفيديو بوضع «الفيديو تحت» */
   X.save();X.globalAlpha=a;X.translate(540,by+bh/2+dy);X.scale(sc,sc);X.translate(-540,-(by+bh/2));
   sh(48,20,0.30);X.fillStyle=cBG(0.96);rr(bx,by,bw,bh,38);X.fill();nsh();
   X.strokeStyle=cINK(0.09);X.lineWidth=2.5;rr(bx,by,bw,bh,38);X.stroke();
@@ -1061,10 +1063,10 @@ function stickers(t){
 let RECAP=[['شيل السكتات'],['كابشن لحظي'],['موشن قرافيكس'],['حل اتجاه العربي']];
 let OUTRO_T={l1:'كل اللي شفته — الكت والكابشن والزوم والموشن',l2:'سواه كلود بروحه',cta:'علّق بكلمة',word:'فيديو',sub:'والملف كامل يوصلك على الخاص'};
 function outro(t){ const s=VEND; if(t<s)return;
-  const wipe=eio(pr(t,s,s+0.45)), top=H*(1-wipe);
+  const wipe=eio(pr(t,s,s+0.45/OSP)), top=H*(1-wipe);
   X.save();X.fillStyle=BG;X.fillRect(0,top,W,H);
   X.beginPath();X.rect(0,top,W,H);X.clip();X.translate(0,top);
-  const ap=d=>pr(t,s+d,s+d+0.42);
+  const ap=d=>pr(t,s+d/OSP,s+d/OSP+0.42/OSP);
   let a=ap(0.30);
   if(a>0&&LOGO.naturalWidth){X.save();X.globalAlpha=a;const L=180,fl=Math.sin((t-s)*1.6)*5;X.drawImage(LOGO,540-L/2,196+fl-(1-ease(a))*18,L,L);X.restore();}   /* بلا شعار = بلا رسم (كان يكسر الكرت كله) */
   a=ap(0.42);
