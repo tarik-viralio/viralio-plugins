@@ -330,7 +330,7 @@ def main():
     json.dump(res, open(out, "w"), ensure_ascii=False, indent=1)
 
     print(f"🥁 {res['bpm']:.1f} Beats/Minute · {len(res['beats'])} Beats · "
-          f"{len(res['accents'])} ضربة قوية · {len(res['drops'])} انفجار · {dur:.1f} ث")
+          f"{len(res['accents'])} starke Schläge · {len(res['drops'])} Explosionen · {dur:.1f} s")
     print("   Die ersten Beats:", " ".join(f"{b:.2f}" for b in res["beats"][:8]))
     print("   Die starken Schläge:", " ".join(f"{b:.2f}" for b in res["accents"][:10]),
           "…" if len(res["accents"]) > 10 else "")
@@ -343,7 +343,7 @@ def main():
         g1, g2 = grid_fit(m2, bpm), grid_fit(m2, bpm * 2)
         if bpm < 100 and g2 >= 0.8 * g1:
             print(f"⚠️  Das Tempo {bpm:.0f} – vielleicht ist das richtige das Doppelte ({bpm*2:.0f}): Das doppelte Raster passt fast gleich stark. "
-                  f"اسمع --click؛ لو التكّة أبطأ من الطبل أعد بـ--bpm {bpm*2:.0f}")
+                  f"Hör dir --click an; ist der Klick langsamer als die Trommel, starte neu mit --bpm {bpm*2:.0f}")
         elif bpm > 150:
             print(f"⚠️  Das Tempo {bpm:.0f} – wenn es dir doppelt so schnell vorkommt wie richtig (die Schnitte wirken sehr schnell), starte neu mit --bpm {bpm/2:.0f}")
         elif bpm < 80:

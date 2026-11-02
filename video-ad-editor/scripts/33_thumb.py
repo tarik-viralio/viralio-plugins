@@ -122,4 +122,4 @@ for i, p in enumerate(outs): sheet.paste(Image.open(p).resize((640, 360)), (i * 
 sheet.save(os.path.join(W, "thumbs_sheet.jpg"), quality=86)
 big_mb = max(os.path.getsize(p.replace("_1280", "")) for p in outs) / 1e6
 print(f"→ {len(outs)} Ideen: {', '.join(os.path.basename(p) for p in outs)} + thumbs_sheet.jpg · 4K größte Datei {big_mb:.1f} MB"
-      + (" (فوق 2 ميقا — للرفع من الجوال استخدم نسخة _1280)" if big_mb > 2 else ""))
+      + (" (über 2 MB – für den Upload vom Handy nimm die Fassung _1280)" if big_mb > 2 else ""))

@@ -37,10 +37,10 @@ fi
 if [ "$NO_LOUDNORM" = "1" ]; then cp "$MIX" "$NRM"; echo "⏭  Lautheitsanpassung übersprungen";
 else
   echo "📏 Messe die Lautheit…"
-  M=$(ffmpeg -hide_banner -nostats -v info -i "$MIX" -af "loudnorm=I=$I:TP=-1.5:LRA=11:print_format=json" -f null - 2>&1 | \
+  M=$(ffmpeg -hide_banner -nostats -v info -i "$MIX" -af "loudnorm=I=$I:TP=-2.5:LRA=11:print_format=json" -f null - 2>&1 | \
       "$PY" -c "import sys,json,re;s=sys.stdin.read();m=re.findall(r'\{[^{}]*input_i[^{}]*\}',s,re.S);print(json.dumps(json.loads(m[-1])) if m else '')")
   if [ -z "$M" ]; then echo "⚠️  Konnte nicht messen – Anpassung in einem Durchlauf";
-    ffmpeg -v error -nostats -i "$MIX" -af "loudnorm=I=$I:TP=-1.5:LRA=11" -ar 48000 -y "$NRM"
+    ffmpeg -v error -nostats -i "$MIX" -af "loudnorm=I=$I:TP=-2.5:LRA=11" -ar 48000 -y "$NRM"
   else
     read -r II TP LRA TH < <("$PY" -c "
 import json,sys;d=json.loads('''$M''');print(d['input_i'],d['input_tp'],d['input_lra'],d['input_thresh'])")
@@ -51,7 +51,7 @@ import json,sys;d=json.loads('''$M''');print(d['input_i'],d['input_tp'],d['input
     else
       echo "   Vorher: $II LUFS → nachher: $I LUFS"
       ffmpeg -v error -nostats -i "$MIX" -af \
-       "loudnorm=I=$I:TP=-1.5:LRA=11:measured_I=$II:measured_TP=$TP:measured_LRA=$LRA:measured_thresh=$TH:linear=true" \
+       "loudnorm=I=$I:TP=-2.5:LRA=11:measured_I=$II:measured_TP=$TP:measured_LRA=$LRA:measured_thresh=$TH:linear=true" \
        -ar 48000 -y "$NRM"
     fi
   fi
@@ -60,5 +60,5 @@ fi
 ffmpeg -v error -nostats -i "$IN" -i "$NRM" -map 0:v:0 -map 1:a:0 -c:v copy \
   -c:a aac -b:a 192k -ar 48000 -movflags +faststart -y "$OUT"
 rm -f "$MIX" "$NRM"
-LU=$(ffmpeg -hide_banner -nostats -v info -i "$OUT" -af "loudnorm=I=$I:TP=-1.5:print_format=summary" -f null - 2>&1 | awk '/Input Integrated/{i=$3}/Input True Peak/{p=$4}END{print i" LUFS · Spitze "p}' || true)
+LU=$(ffmpeg -hide_banner -nostats -v info -i "$OUT" -af "loudnorm=I=$I:TP=-2.5:print_format=summary" -f null - 2>&1 | awk '/Input Integrated/{i=$3}/Input True Peak/{p=$4}END{print i" LUFS · Spitze "p}' || true)
 echo "✅ $OUT  — $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$OUT" | awk '{printf "%.2f s", $1}') · $LU"

@@ -200,7 +200,7 @@ const FLAT_B='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2
   const pct=x=>(x*100).toFixed(2)+'٪';
   console.log('— Hook —');
   console.log(hookOK?`✅ Der erste Untertitel erscheint bei ${hook.toFixed(2)} Sekunden`
-    :`❌ أول كابشن عند ${hook.toFixed(2)} ثانية — متأخر. لازم قبل ${SAFE.hook_max} (نصف المشاهدين ينزلون بأول ثانية)`);
+    :`❌ Der erste Untertitel erscheint erst bei ${hook.toFixed(2)} Sekunden – zu spät. Er muss vor ${SAFE.hook_max} kommen (die Hälfte der Zuschauer springt in der ersten Sekunde ab)`);
   console.log('— Sichere Zone (Stichprobe von '+times.length+' Frames'+(novid?' · davon '+novid+' ohne Video (ganze Erklärung/Schlusskarte) ohne Maske gemessen':'')+') —');
   let bad=[];
   for(const z of zones){

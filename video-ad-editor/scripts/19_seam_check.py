@@ -13,7 +13,7 @@ try:
 except ImportError:
     import whisper; _m = whisper.load_model(os.environ.get("WHISPER_MODEL", "turbo"))
     tr = lambda seg: _m.transcribe(seg, language=os.environ.get("VIDEO_LANG","de"), word_timestamps=True, condition_on_previous_text=False, fp16=False)
-norm = lambda s: re.sub(r"[^ء-ي0-9]", "", s).translate(str.maketrans("أإآىة", "ااايه"))
+norm = lambda s: re.sub(r"[^a-zäöüß0-9]", "", s.lower())
 CW = [w for c in caps["cards"] for w in c["w"]]; acc, bad = 0, 0
 for i, (a0, b0) in enumerate(keep[:-1]):
     acc += b0 - a0; a, b = max(0, acc - 4), acc + 4

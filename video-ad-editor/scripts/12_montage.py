@@ -280,7 +280,7 @@ def cmd_show(W, args):
         mark = "  " if not c.get("skip") else "⊘ "
         bar = "█" * int(round(c["score"] * 10)) + "·" * (10 - int(round(c["score"] * 10)))
         print(f"{mark}{c['i']:2d}. {bar} {c['score']:.2f}  {c['pick'][0]:6.2f}→{c['pick'][1]:6.2f}"
-              f"  حركة {c['mot']:5.1f}  {c['name']}")
+              f"  Bewegung {c['mot']:5.1f}  {c['name']}")
     if "plan" in d:
         tot = sum(p["dur"] for p in d["plan"])
         print(f"\n📋 Plan bereit: {len(d['plan'])} Einstellungen · {tot:.1f} Sekunden")
@@ -298,7 +298,7 @@ def cmd_pick(W, args, mode):
     d.pop("plan", None)
     save(W, d)
     print(f"✅ {'Entfernt' if mode=='drop' else 'Behalten'} {sorted(nums)} – Rest "
-          f"{len([c for c in d['clips'] if not c['skip']])} مقطعاً. (خطة قديمة أُلغيت)")
+          f"{len([c for c in d['clips'] if not c['skip']])} Clips. (alter Plan verworfen)")
 
 
 def cmd_undo(W, args):
@@ -383,7 +383,7 @@ def cmd_sheet(W, args):
         if r.returncode:
             die("Das Zusammenbauen des Blatts ist fehlgeschlagen:\n" + r.stderr[-400:])
         print(f"✅ {out}  ({len(shots)} Einstellungen · {cols}×{rows}) – ohne Zahlen auf den Bildern.\n"
-              f"   الترتيب من فوق-يسار وسطراً سطراً: {order}")
+              f"   Reihenfolge von oben links, Zeile für Zeile: {order}")
     print("Lies es als Ganzes, nicht die Einzelbilder.")
 
 
@@ -504,15 +504,15 @@ def cmd_plan(W, args):
                   f"وهذا أطول من --shot {shot}. تبيها كلها على الضربات؟ كبّر --shot لـ{gaps[len(gaps) // 2]:.1f}")
         if offbeat:
             print(f"⚠️  {offbeat} Schnitte fielen außerhalb des Rhythmus: Der Clip ist kürzer als der Abstand zum nächsten Beat ({', '.join(short_clips[:4])}). "
-                  "شيل هالمقاطع (drop) أو حط مقاطع أطول — القطع هذا ما ياخذ مؤثر انتقال")
+                  "Entferne diese Clips (drop) oder nimm längere – dieser Schnitt bekommt keinen Übergangseffekt")
     else:
         d.pop("cuts", None); d.pop("beats_file", None)
     save(W, d)
     if target and tot < target * 0.92:
         print(f"⚠️  Die Clips reichen nicht für {target:.0f} Sekunden – es wurden {tot:.1f}. "
-              f"زد `--shot` أو زد مقاطع (ما نكرّر لقطة مرتين).")
+              f"Erhöhe `--shot` oder füge Clips hinzu (eine Einstellung wird nicht doppelt verwendet).")
     print(f"📋 {len(plan)} Einstellungen · {tot:.1f} Sekunden"
-          + (f" · على نبضة {bpm:.0f}" if bpm else "") + f" · ترتيب {order}")
+          + (f" · auf Beat {bpm:.0f}" if bpm else "") + f" · Reihenfolge {order}")
     for k, p in enumerate(plan, 1):
         print(f"  {k:2d}. [{p['i']:2d}] {p['in']:6.2f} +{p['dur']:.2f}s  {p['name']}")
 
@@ -601,9 +601,9 @@ def cmd_build(W, args):
               "-pix_fmt", "yuv420p", "-r", str(R), "-c:a", "aac", "-b:a", "160k",
               "-ar", "48000", "-shortest", "-movflags", "+faststart", "-y", out])
     print(f"🎬 Ich baue {len(plan)} Einstellungen → {total:.1f} Sekunden · {ar}"
-          + (f" · تلاشٍ {xf}s" if xf > 0 else " · قطع حاد")
-          + ("" if not zoom else (" · بلا زوم (المصدر مو أكبر من المخرَج)" if nozoom == len(plan)
-                                  else f" · زوم على {len(plan)-nozoom} لقطة")))
+          + (f" · Überblendung {xf}s" if xf > 0 else " · harter Schnitt")
+          + ("" if not zoom else (" · ohne Zoom (die Quelle ist nicht größer als die Ausgabe)" if nozoom == len(plan)
+                                  else f" · Zoom auf {len(plan)-nozoom} Einstellungen")))
     r = subprocess.run(cmd)
     if r.returncode:
         die("Zusammenbau fehlgeschlagen.")

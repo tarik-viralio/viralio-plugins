@@ -241,7 +241,7 @@ def cmd_find(W, args, where=False):
     for k, h in enumerate(hits, 1):
         rng = f"{h['a']:.1f}→{h['b']:.1f}" if h["b"] > h["a"] else f"{h['t']:.1f}"
         mn = nums.get(h["file"])
-        tag = f"  [مقطع المونتاج {mn}]" if (where or nums) and mn else ""
+        tag = f"  [Montage-Clip {mn}]" if (where or nums) and mn else ""
         print(f"  {k:2d}. {h['score']:.3f}  {os.path.basename(h['file'])} @ {rng}s{tag}")
     if hits and hits[0]["score"] < 0.05:
         print("ℹ️  Die Übereinstimmung ist schwach – vielleicht gibt es die Einstellung nicht, oder versuch eine klarere Beschreibung auf Englisch.")

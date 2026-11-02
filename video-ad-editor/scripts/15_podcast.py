@@ -155,7 +155,7 @@ def speaker_timeline(W,cams,start,total,same_audio):
         if ok.sum()>=8 and a[ok].std()>0 and b[ok].std()>0:
             r=float(np.corrcoef(a[ok],b[ok])[0,1]); A=a[ok]>0.8; B=b[ok]>0.8
             jac=float((A&B).sum()/max(1,(A|B).sum())); same=(r>0.55) or (jac>0.65 and r>0.3)
-            diag=f"تطابق الفم r={r:.2f} تداخل={jac:.2f} على {int(ok.sum())} نافذة"
+            diag=f"Mund-Übereinstimmung r={r:.2f} Überlappung={jac:.2f} in {int(ok.sum())} Fenstern"
     # الطاقة لو لكل كاميرا مايك
     en={}
     if not same_audio:
@@ -190,12 +190,12 @@ def caption_spot(W,cam,s,e,zoom,cinfo):
     """وين يقعد الكابشن بمشهد ملء الشاشة: فوق الراس لو فيه فراغ هادي (≥ 300 بكسل ومنطقة قليلة التفاصيل)، وإلا تحت (1440).
        يرجّع {"y":..,"why":..}"""
     f=face_window(W,cam,s,e)
-    if not f: return {"y":1440,"why":"بلا وجه"}
+    if not f: return {"y":1440,"why":"ohne Gesicht"}
     iw,ih=cinfo["w"],cinfo["h"]; sc=max(1080/iw,1920/ih)*(zoom or 1); dh=ih*sc
     fy=f["y"]+f["h"]/2; dy=1920*0.42-fy*dh; dy=min(0,max(1920-dh,dy))
     top_px=dy+f["y"]*dh                     # أعلى الراس بالبكسل على الشاشة
     room=top_px-150
-    if room<420: return {"y":1440,"why":f"فوق الراس {int(room)}px بس (نحتاج 420)"}
+    if room<420: return {"y":1440,"why":f"nur {int(room)}px über dem Kopf (nötig sind 420)"}
     # هدوء المنطقة فوق الراس: انحراف الرمادي بفريمات منخفضة
     lo=os.path.join(W,"lo",f"cam{cam}"); stds=[]
     for k in range(int(s*LOFPS)+1,int(e*LOFPS),max(1,int((e-s)*LOFPS/4))):
@@ -205,9 +205,9 @@ def caption_spot(W,cam,s,e,zoom,cinfo):
         if len(a)!=54*96: continue
         a=a.reshape(96,54); y0=int(150/1920*96); y1=max(y0+2,int(top_px/1920*96)); stds.append(float(a[y0:y1,8:46].std()))
     calm=statistics.median(stds) if stds else 99
-    if calm>48: return {"y":1440,"why":f"فوق الراس مزدحم ({calm:.0f})"}
+    if calm>48: return {"y":1440,"why":f"über dem Kopf unruhig ({calm:.0f})"}
     band_lo,band_hi=230,top_px-200                        # الحزام المتاح: تحت المنطقة الآمنة وفوق الراس بـ200 بكسل على الأقل
-    return {"y":int(min(band_hi,(band_lo+band_hi)/2)),"why":f"فراغ هادي فوق الراس ({int(room)}px, هدوء {calm:.0f})"}
+    return {"y":int(min(band_hi,(band_lo+band_hi)/2)),"why":f"ruhiger Freiraum über dem Kopf ({int(room)}px, Ruhe {calm:.0f})"}
 
 def speaker_of(spk,s,e):
     WIN=spk["win"]; tl=spk["tl"]; ks=range(max(0,int(s/WIN)),min(len(tl),int(e/WIN)+1))
@@ -250,14 +250,14 @@ def plan(W):
         P={"outro":json.load(open(os.path.join(W,"sfx.json"))).get("outro",1.8),"same_person":False,"screen":scr,"person":per,"scenes":scenes}
         json.dump(P,open(os.path.join(W,"plan.json"),"w"),ensure_ascii=False,indent=1)
         print("Die Szenen: 1 – die Bildschirmaufnahme oben und die Person unten, über die ganze Videodauer"); return P
-    QW=("هل","ليش","ليه","شنو","شلون","كيف","وش","متى","وين","لماذا","ماذا","من","كم","هو","هي")
+    QW=("wie","warum","wieso","weshalb","was","wer","wo","wann","wieviel","welche","welcher","welches")
     quote=None
     hk=theme.get("hook"); hk_end=(float(hk.get("dur",2.4))+0.4) if isinstance(hk,dict) and hk.get("text") else 0.0   # 🪝 v3.8.1: السؤال الكبير ما ينحط تحت الهوك المكتوب
     for u in units:
         if u["s"]<hk_end: continue
         ws=cards[u["i"]]["w"]; txt=" ".join(w["t"] for w in ws)
         qi=next((k for k,w in enumerate(ws) if w["t"] in QW),None)
-        if qi is None and not txt.endswith("؟"): continue
+        if qi is None and not txt.endswith("?"): continue
         qi=qi or 0
         if qi>0 and (ws[qi]["s"]-ws[0]["s"])>=2.5 and (ws[-1]["e"]-ws[qi]["s"])<0.8: continue
         qws=ws[qi:qi+6]

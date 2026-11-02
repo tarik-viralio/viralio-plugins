@@ -98,6 +98,7 @@ have ffmpeg  && OK+=("ffmpeg")  || MISS+=("ffmpeg")
 have ffprobe && OK+=("ffprobe") || MISS+=("ffprobe")
 "$PY" -c "import whisper" 2>/dev/null && OK+=("whisper") || MISS+=("whisper")
 "$PY" -c "import numpy"   2>/dev/null && OK+=("numpy")   || MISS+=("numpy")
+"$PY" -c "import PIL"     2>/dev/null && OK+=("pillow")  || MISS+=("pillow")
 
 # كروم: نفس ترتيب البحث اللي بالسكربتات
 find_chrome(){
@@ -147,6 +148,7 @@ for m in "${MISS[@]}"; do
     whisper) line "⏬ openai-whisper… (das Modell wird beim ersten Start geladen, 1,4 GB)"
       pipi openai-whisper || NOTE+=("whisper fehlgeschlagen") ;;
     numpy)   pipi numpy || NOTE+=("numpy fehlgeschlagen") ;;
+    pillow)  pipi pillow || NOTE+=("pillow fehlgeschlagen") ;;
     puppeteer-core) line "⏬ puppeteer-core…"
       ( cd "$SKILL" && npm i --silent puppeteer-core ) || NOTE+=("puppeteer-core fehlgeschlagen") ;;
     chrome) NOTE+=("Chrome ist nicht installiert – lade es von google.com/chrome oder setze CHROME_PATH") ;;
@@ -155,7 +157,7 @@ done
 
 FAIL=0
 have ffmpeg || FAIL=1
-"$PY" -c "import whisper,numpy" 2>/dev/null || FAIL=1
+"$PY" -c "import whisper,numpy,PIL" 2>/dev/null || FAIL=1
 find_chrome >/dev/null || FAIL=1
 ( cd "$SKILL" && node -e "require.resolve('puppeteer-core')" ) 2>/dev/null || FAIL=1
 [ ${#NOTE[@]} -gt 0 ] && printf '⚠️  %s\n' "${NOTE[@]}"

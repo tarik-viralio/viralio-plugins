@@ -98,20 +98,20 @@ def verdict(m):
     bright = med > 175 or m["clip_white"] > 4
     flat = wh - bl < 130 and m["clip_white"] < 1 and m["clip_black"] < 1
     if dark:
-        issues.append("غامج — الإضاءة ناقصة")
+        issues.append("zu dunkel – die Belichtung fehlt")
     elif bright:
-        issues.append("فاتح زيادة" + (" — فيه مناطق محروقة" if m["clip_white"] > 4 else ""))
+        issues.append("zu hell" + (" – ausgebrannte Stellen" if m["clip_white"] > 4 else ""))
     if m["clip_black"] > 6:
-        issues.append("فيه أسود مقصوص (ظلال ضايعة)")
+        issues.append("abgeschnittenes Schwarz (verlorene Schatten)")
     if flat:
-        issues.append("باهت (التباين ضعيف — يمكن مصوّر بلوق)")
+        issues.append("flau (schwacher Kontrast)")
     # توازن الأبيض = ضرب كل قناة بمعامل (colorchannelmixer) — colorbalance ما يحرّك الدرجات الوسطى
     #  نقرّب المحايد 85٪ من الرمادي بس، عشان يبقى شوية دفء طبيعي
     warm_bad, green_bad = abs(m["warm"]) > 0.05, abs(m["green"]) > 0.04
     if warm_bad:
-        issues.append("مايل للأصفر" if m["warm"] > 0 else "مايل للأزرق")
+        issues.append("gelbstichig" if m["warm"] > 0 else "blaustichig")
     if green_bad:
-        issues.append("مايل للأخضر" if m["green"] > 0 else "مايل للبنفسجي")
+        issues.append("grünstichig" if m["green"] > 0 else "violettstichig")
     if warm_bad or green_bad:
         r, g, b = m["neu_rgb"]
         t = (r + g + b) / 3
@@ -142,11 +142,11 @@ def verdict(m):
     elif bright:
         eq["gamma"] = round(max(0.8, min(0.95, (140 / med) ** 0.5)), 2)
     if m["sat"] < 0.10:
-        issues.append("الألوان باهتة")
+        issues.append("blasse Farben")
         eq["saturation"] = 1.15
     pf = m["per_frame_median"]                                 # غيمة · لمبة · تعريض تلقائي
     if len(pf) > 3 and max(pf) - min(pf) > 55:
-        issues.append("الإضاءة تتغيّر بين أجزاء الفيديو")
+        issues.append("das Licht wechselt zwischen den Abschnitten")
     return issues, {"cb": cb, "lv": lv, "eq": eq, "dark": dark, "bright": bright}
 
 
@@ -240,13 +240,13 @@ def main(a):
         res["after"] = {k: after[k] for k in ("median", "black", "white", "warm", "green", "sat")}
     json.dump(res, open(out, "w"), ensure_ascii=False, indent=1)
     print(f"🔬 {res['src']}: Helligkeit {m['median']:.0f}/255 · Schwarz {m['black']:.0f} · Weiß {m['white']:.0f}"
-          f" · محروق {m['clip_white']}٪ · حرارة {m['warm']:+.2f} · أخضر {m['green']:+.2f} · تشبّع {m['sat']:.2f}")
+          f" · ausgebrannt {m['clip_white']} % · Wärme {m['warm']:+.2f} · Grün {m['green']:+.2f} · Sättigung {m['sat']:.2f}")
     if issues:
         print("⚠️  " + " · ".join(issues))
         print("   Vorgeschlagene Korrektur (nur mit seiner Zustimmung ← theme.json \"grade\":\"auto\"): " + (fix or "—"))
         if after:
             print(f"   danach: Helligkeit {after['median']:.0f} · Schwarz {after['black']:.0f} · Weiß {after['white']:.0f}"
-                  f" · حرارة {after['warm']:+.2f} · أخضر {after['green']:+.2f}")
+                  f" · Wärme {after['warm']:+.2f} · Grün {after['green']:+.2f}")
     else:
         print("✅ Licht und Farben sind in Ordnung – nicht anfassen.")
     print("→ " + out)

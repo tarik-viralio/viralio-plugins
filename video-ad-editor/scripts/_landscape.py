@@ -90,7 +90,7 @@ def plan(src, work, keep, SW, SH, zooms, anch=0.30):
     json.dump(shots, open(os.path.join(work, "shots.json"), "w"), ensure_ascii=False, indent=1)
     small = sum(1 for x in shots if x["kind"] == "face" and x["face_w"] < 0.07)
     print(f"📐 Das Video ist quer ({SW}×{SH}) – ich habe es hochkant um das Gesicht geschnitten: {len(shots)} Einstellungen"
-          + (f" · {small} عريضة قرّبت عليها" if small else "")
-          + (f" · {sum(1 for x in shots if x['kind']=='near')} بلا وجه واضح (تبعت مكان المتكلم)" if any(x['kind']=='near' for x in shots) else "")
-          + (f" · {sum(1 for x in shots if x['kind']=='center')} من النص" if any(x['kind']=='center' for x in shots) else ""))
+          + (f" · {small} weite Einstellungen herangezoomt" if small else "")
+          + (f" · {sum(1 for x in shots if x['kind']=='near')} ohne klares Gesicht (Ort des Sprechers übernommen)" if any(x['kind']=='near' for x in shots) else "")
+          + (f" · {sum(1 for x in shots if x['kind']=='center')} aus der Mitte" if any(x['kind']=='center' for x in shots) else ""))
     return pieces

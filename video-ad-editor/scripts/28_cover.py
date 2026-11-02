@@ -151,7 +151,7 @@ def main():
             if over > 0:
                 lift = int(min(over, max(0, fb["y"] - (SQ0 + 10))))
                 print(f"🙂 Cover: Das Gesicht lag {over:.0f}px unter dem Text – ich habe das Bild {lift}px angehoben"
-                      + ("" if lift >= over else " (أكثر من كذا يطلع الراس برّا المربع — اختصر العنوان لسطر أو شيل السطر الصغير)"))
+                      + ("" if lift >= over else " (mehr, und der Kopf rutscht aus dem Quadrat – kürze den Titel auf eine Zeile oder streiche die kleine Zeile)"))
             if (xlogo or oklogo) and fb["y"] - lift < SQ0 + 260:
                 print("⚠️ Cover: Die Logo-Reihe oben würde in diesem Frame den Kopf verdecken – nimm --cut oder --photo mit den Logos")
         under = f'<img class="fr" src="{uri(frame)}" style="filter:blur(40px);transform:scale(1.1)">' if lift else ""   # الشريط اللي ينكشف تحت = نفس الفريم مغبّش
@@ -202,7 +202,7 @@ def main():
     sheet = Image.new("RGB", (sum(p.width for p in parts) + 40, H), (24, 24, 24)); x = 0
     for p in parts: sheet.paste(p, (x, 0)); x += p.width + 20
     sheet.save(os.path.join(W, "cover_grid.jpg"), quality=85)
-    msg = f"→ cover.jpg + cover_grid.jpg (9:16 · 4:5 · 1:1) — اعرض cover_grid.jpg عليه"
+    msg = f"→ cover.jpg + cover_grid.jpg (9:16 · 4:5 · 1:1) – zeig ihm cover_grid.jpg"
     if first and os.path.exists(first):
         hold = arg("--hold", 0.1); out = os.path.splitext(first)[0] + "-cover.mp4"
         has_a = bool(subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=index", "-of", "csv=p=0", first], capture_output=True, text=True).stdout.strip())
@@ -231,8 +231,8 @@ def main():
             subprocess.run(base + rc + ["-pass", "2", "-movflags", "+faststart", out], check=True)
             for f in (lg + "-0.log", lg + "-0.log.mbtree"):
                 if os.path.exists(f): os.remove(f)
-            msg += f" · بمرحلتين {vb}k ({os.path.getsize(out) / 1048576:.1f} ميقا)"
-        msg += f" · والكفر صار أول فريم ← {os.path.basename(out)}"
+            msg += f" · zweistufig {vb}k ({os.path.getsize(out) / 1048576:.1f} MB)"
+        msg += f" · und das Cover ist der erste Frame → {os.path.basename(out)}"
     print(msg + (f" · TikTok: Sekunde {t:.2f}" if t >= 0 and not photo else ""))
 
 if __name__ == "__main__":

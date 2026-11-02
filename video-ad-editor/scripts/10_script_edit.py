@@ -48,13 +48,10 @@ def save(n, d):
 # ── كشف الجملة المعادة ─────────────────────────────────────────────────────
 # لما يعيد صياغة جملة، الغالب إن الأولى هي الغلط والثانية هي التصحيح.
 import re as _re, difflib
-_STOP = {"في","من","على","الى","إلى","عن","مع","هذا","هذي","هذه","ذلك","اللي","الي",
-         "و","او","أو","ثم","بس","يا","ان","أن","إن","ما","لا","كل","كان","صار","هو","هي"}
+_STOP = {"der","die","das","den","dem","des","ein","eine","einen","einem","und","oder","aber","dass","ist","sind","war","hat","ich","du","er","sie","es","wir","ihr",
+         "zu","von","mit","auf","in","im","an","am","für","nicht","auch","so","wie","also","dann","noch","nur","mal"}
 def _norm(w):
-    w = _re.sub(r"[\u064B-\u0652\u0640]", "", w)          # تشكيل وتطويل
-    w = w.replace("أ","ا").replace("إ","ا").replace("آ","ا").replace("ة","ه").replace("ى","ي")
-    if len(w) > 4 and w.startswith("ال"): w = w[2:]
-    return w
+    return _re.sub(r"[^\wäöüß]", "", w.lower())
 def _words(c): return [_norm(x["t"]) for x in c["w"]]
 def _sim(a, b):
     """تشابه جملتين: نسبة الكلمات المشتركة من الأقصر + تشابه الحروف"""

@@ -10,7 +10,7 @@ import json, os, sys, subprocess, time, numpy as np
 src, out = sys.argv[1], sys.argv[2]; os.makedirs(out, exist_ok=True); SR = 16000
 raw = subprocess.run(["ffmpeg", "-v", "error", "-i", src, "-vn", "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"], capture_output=True).stdout
 x = np.frombuffer(raw, np.float32); dur = len(x) / SR
-BAD = ["اشتركوا في القناة", "ترجمة نانسي قنقر", "شكرا للمشاهدة"]
+BAD = ["Untertitel der Amara.org-Community", "Untertitelung des ZDF", "Vielen Dank fürs Zuschauen", "Abonniert den Kanal"]
 try:
     import mlx_whisper
     def tr(seg): return mlx_whisper.transcribe(seg, path_or_hf_repo="mlx-community/whisper-large-v3-turbo", language=os.environ.get("VIDEO_LANG","de"),
