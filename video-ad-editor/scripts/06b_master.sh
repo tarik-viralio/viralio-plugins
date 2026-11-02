@@ -58,7 +58,7 @@ import json,sys;d=json.loads('''$M''');print(d['input_i'],d['input_tp'],d['input
 fi
 
 ffmpeg -v error -nostats -i "$IN" -i "$NRM" -map 0:v:0 -map 1:a:0 -c:v copy \
-  -c:a aac -b:a 192k -ar 48000 -movflags +faststart -y "$OUT"
+  -af "alimiter=limit=0.75:attack=5:release=50:level=disabled" -c:a aac -b:a 192k -ar 48000 -movflags +faststart -y "$OUT"
 rm -f "$MIX" "$NRM"
 LU=$(ffmpeg -hide_banner -nostats -v info -i "$OUT" -af "loudnorm=I=$I:TP=-2.5:print_format=summary" -f null - 2>&1 | awk '/Input Integrated/{i=$3}/Input True Peak/{p=$4}END{print i" LUFS · Spitze "p}' || true)
 echo "✅ $OUT  — $(ffprobe -v error -show_entries format=duration -of csv=p=0 "$OUT" | awk '{printf "%.2f s", $1}') · $LU"
